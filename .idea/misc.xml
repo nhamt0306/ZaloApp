@@ -3,14 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1465" />
+        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/drawable/round_theme.xml" value="0.1" />
+        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/drawable/round_theme_light.xml" value="0.1465" />
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/edit_profile_layout.xml" value="0.2105978260869565" />
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/fragment_contact.xml" value="0.25" />
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/fragment_feed.xml" value="0.25" />
-        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/fragment_info.xml" value="0.25" />
-        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/fragment_message.xml" value="0.1" />
+        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/fragment_info.xml" value="0.2" />
+        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/fragment_message.xml" value="0.2222222222222222" />
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/home_layout.xml" value="0.1" />
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/login_layout.xml" value="0.264" />
+        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/message_item.xml" value="0.16" />
+        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/message_layout.xml" value="0.2105978260869565" />
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/signup_layout.xml" value="0.25" />
+        <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/layout/user_item.xml" value="0.2105978260869565" />
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/menu/menu.xml" value="0.1" />
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/menu/menu_nav.xml" value="0.1" />
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/menu/menu_navigation.xml" value="0.25" />

@@ -2,11 +2,13 @@ package hcmute.edu.vn.nhom01.zaloapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -32,6 +34,9 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 writeNewUser(edtPhone.getText().toString(), edtEmail.getText().toString(), edtPass.getText().toString(), null, null);
+                Toast.makeText(SignUpActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -48,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     private void writeNewUser(String phone, String email, String pass, String name, ImageView img)
     {
-        User user = new User(phone, pass, email, "Mai Thanh Nhã");
+        User user = new User(phone, pass, email, "Chưa cập nhật tên!");
         mDatabase.child("users").child(phone).setValue(user);
     }
 }

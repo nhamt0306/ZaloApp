@@ -8,11 +8,53 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+<!--        Header tìm kiếm-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/yellow">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_theme_light"
+                android:src="@drawable/ic_baseline_search_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Find message or friend"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_theme_light"
+                android:padding="4dp"
+                android:src="@drawable/ic_baseline_supervised_user_circle_24" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/message_RecyclerView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đây là Message Fragment"/>
+            android:layout_height="580dp">
+
+        </ListView>
+
+
     </LinearLayout>
 </FrameLayout>

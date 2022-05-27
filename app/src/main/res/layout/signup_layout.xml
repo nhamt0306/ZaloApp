@@ -113,7 +113,7 @@
             android:textSize="16dp"
             android:layout_marginRight="20dp"
             android:textColor="@color/white"
-            android:background="@color/teal_700"
+            android:background="@drawable/round_theme"
             app:backgroundTint="@color/teal_700"
             app:cornerRadius="80sp"/>
     </LinearLayout>
