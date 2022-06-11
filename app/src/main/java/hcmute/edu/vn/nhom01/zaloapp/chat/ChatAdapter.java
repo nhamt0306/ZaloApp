@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import hcmute.edu.vn.nhom01.zaloapp.MemoryData;
 import hcmute.edu.vn.nhom01.zaloapp.R;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
@@ -23,7 +24,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     public ChatAdapter(List<ChatList> chatLists, Context context) {
         this.chatLists = chatLists;
         this.context = context;
-//        this.userMobile = MemoryData.getData(context);
+        this.userMobile = MemoryData.getData(context);
     }
 
     @NonNull

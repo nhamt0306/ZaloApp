@@ -137,12 +137,12 @@ public class MessageFragment extends Fragment {
 
                                                 for (DataSnapshot chatDataSnapshot : dataSnapshot1.child("messages").getChildren()) {
                                                     final long getMessageKey = Long.parseLong(chatDataSnapshot.getKey());
-//                                                    final long getLastSeenMessages = Long.parseLong(MemoryData.getLastMsgTs(getActivity(), getKey));
+                                                    final long getLastSeenMessages = Long.parseLong(MemoryData.getLastMsgTs(getActivity(), getKey));
 
                                                     lastMessage = chatDataSnapshot.child("msg").getValue(String.class);
-//                                                    if (getMessageKey > getLastSeenMessages) {
-//                                                        unseenMessage++;
-//                                                    }
+                                                    if (getMessageKey > getLastSeenMessages) {
+                                                        unseenMessage++;
+                                                    }
                                                 }
                                             }
                                         }
