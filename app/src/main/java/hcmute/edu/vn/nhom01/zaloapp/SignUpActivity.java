@@ -55,5 +55,8 @@ public class SignUpActivity extends AppCompatActivity {
     {
         User user = new User(phone, pass, email, "Chưa cập nhật tên!");
         mDatabase.child("users").child(phone).setValue(user);
+        mDatabase.child("users").child(phone).child("profile_pic").setValue("");
+
+
     }
 }

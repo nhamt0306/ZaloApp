@@ -66,7 +66,16 @@ public class MainActivity extends AppCompatActivity {
 
                             if (user.getPassword().equals(edtPass.getText().toString()))
                             {
+                                // lưu số điện thoại vào bộ nhớ
+                                MemoryData.saveData(user.getPhoneNumberUser(), MainActivity.this);
+
+                                // lưu tên vào bộ nhớ
+                                MemoryData.saveName(user.getNameUser(), MainActivity.this);
+
                                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                intent.putExtra("mobile", user.getPhoneNumberUser());
+                                intent.putExtra("name", user.getNameUser());
+                                intent.putExtra("email", user.getEmailUser());
                                 startActivity(intent);
                                 Toast.makeText(MainActivity.this,"Login success!", Toast.LENGTH_SHORT).show();
                             }

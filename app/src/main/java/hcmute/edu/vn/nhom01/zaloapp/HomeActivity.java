@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import hcmute.edu.vn.nhom01.zaloapp.adapters.ViewPagerAdapter;
 
 public class HomeActivity extends AppCompatActivity {
+
     private ViewPager viewPager;
     private BottomNavigationView bottomNavigationView;
     @Override
