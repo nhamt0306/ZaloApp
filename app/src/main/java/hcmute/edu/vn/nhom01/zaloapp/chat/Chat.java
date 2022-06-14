@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -63,7 +64,7 @@ public class Chat extends AppCompatActivity {
         getUserMobile = MemoryData.getData(Chat.this);
 
         nameTV.setText(getName);
-//        Picasso.get().load(getProfilePic).into(profilePic);
+        Picasso.get().load(getProfilePic).into(profilePic);
 
         chattingRecyclerView.setHasFixedSize(true);
         chattingRecyclerView.setLayoutManager(new LinearLayoutManager(Chat.this));

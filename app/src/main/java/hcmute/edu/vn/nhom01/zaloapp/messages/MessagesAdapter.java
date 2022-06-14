@@ -44,7 +44,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
         MessagesList list2 = messagesLists.get(position);
 
         if (!list2.getProfilePic().isEmpty()) {
-            Picasso.get().load(list2.getProfilePic()).into(holder.profilePic);
+          //  Picasso.get().load(list2.getProfilePic()).into(holder.profilePic);
+            // có thêm Picasso vô rồi nhưng vẫn chạy k đc
         }
 
         holder.name.setText(list2.getName());
