@@ -17,10 +17,13 @@ import hcmute.edu.vn.nhom01.zaloapp.models.User;
 
 public class EditProfileActivity extends AppCompatActivity {
 
+    private Button btn_EditAvatar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_profile_layout);
+
+
 
     }
 

@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 public class UserInfoFragment extends Fragment {
+    private Button btn_EditAvatar;
 
     TextView txtLogout, txtCloud, txtEditProfile, txtSetting;
     public UserInfoFragment() {
@@ -27,6 +29,7 @@ public class UserInfoFragment extends Fragment {
         txtCloud = view.findViewById(R.id.txtCloud);
         txtLogout = view.findViewById(R.id.txtLogout);
         txtSetting = view.findViewById(R.id.txtSetting);
+        btn_EditAvatar=view.findViewById(R.id.btnEditImage);
 
 
         txtLogout.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +42,17 @@ public class UserInfoFragment extends Fragment {
 //                Toast.makeText(getActivity(), "Log out success!", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        btn_EditAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( getActivity(),EditAvatarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         txtCloud.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +73,6 @@ public class UserInfoFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), EditProfileActivity.class);
                 startActivity(intent);
-
             }
         });
 
