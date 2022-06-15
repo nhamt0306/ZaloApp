@@ -79,6 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/imgUser_feed"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -93,22 +94,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
                     android:text="Phi Anh"
                     android:textColor="@color/teal_700"
                     android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/text_view_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="Name"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-            </LinearLayout>
 
+            </LinearLayout>
         </LinearLayout>
+        <TextView
+            android:id="@+id/text_view_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:text="Name"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
         <ImageView
             android:id="@+id/image_view_upload"
             android:layout_width="match_parent"

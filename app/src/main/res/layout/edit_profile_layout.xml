@@ -26,11 +26,11 @@
                 android:layout_marginBottom="10dp"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
-                android:id="@+id/imgUser"
+                android:id="@+id/imgUserEditProfile"
                 android:src="@drawable/logo"
                 app:civ_border_width="1dp" />
             <TextView
-                android:id="@+id/txtUserName"
+                android:id="@+id/txtUserNameEditProfile"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
                 android:layout_marginLeft="10dp"
@@ -61,6 +61,7 @@
                     android:layout_marginLeft="20dp"
                     android:textColor="@color/black"/>
                 <EditText
+                    android:id="@+id/edtNameProfile"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginRight="20dp"
@@ -71,28 +72,29 @@
                     android:textColor="@color/black"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Age"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@color/black"/>
-                <EditText
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="8dp"
-                    android:text="21"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="Age"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:textColor="@color/black"/>-->
+<!--                <EditText-->
+<!--                    android:id="@+id/edtAgeProfile"-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="21"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:textColor="@color/black"/>-->
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -107,6 +109,7 @@
                     android:layout_marginLeft="20dp"
                     android:textColor="@color/black"/>
                 <EditText
+                    android:id="@+id/edtPhoneProfile"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginRight="20dp"
@@ -130,6 +133,7 @@
                     android:layout_marginLeft="20dp"
                     android:textColor="@color/black"/>
                 <EditText
+                    android:id="@+id/edtEmailProfile"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginRight="20dp"
@@ -140,34 +144,30 @@
                     android:textColor="@color/black"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Address"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@color/black"/>
-                <EditText
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Tây Hòa, Phú Yên"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="20dp"/>
-            </LinearLayout>
-
-
-
-
-
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="Address"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:textColor="@color/black"/>-->
+<!--                <EditText-->
+<!--                    android:id="@+id/edtAddressProfile"-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="Tây Hòa, Phú Yên"-->
+<!--                    android:textSize="20dp"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_marginBottom="20dp"/>-->
+<!--            </LinearLayout>-->
         </LinearLayout>
 
         <LinearLayout

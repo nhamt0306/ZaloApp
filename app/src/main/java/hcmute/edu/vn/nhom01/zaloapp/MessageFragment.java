@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,8 +108,11 @@ public class MessageFragment extends Fragment {
                 unseenMessage = 0;
                 lastMessage = "";
                 chatKey = "";
+
                 for (DataSnapshot dataSnapshot : snapshot.child("users").getChildren()) {
+
                     final String getMobile = dataSnapshot.getKey();
+//                    Log.e("onDataChange: ", getMobile);
 
                     dataSet = false;
                     if (!getMobile.equals(mobile)) {
@@ -159,6 +163,13 @@ public class MessageFragment extends Fragment {
 
                             }
                         });
+//
+//                        if (!dataSet) {
+//                            dataSet = true;
+//                            MessagesList messagesList = new MessagesList(getName, getMobile, lastMessage, getProfilePic, unseenMessage, chatKey);
+//                            messagesLists.add(messagesList);
+//                            messagesAdapter.updateData(messagesLists);
+//                        }
                     }
                 }
             }
