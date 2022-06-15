@@ -63,21 +63,23 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             User user = dataSnapshot.getValue(User.class);
+                            if (user != null) {
+                                if (user.getPassword().equals(edtPass.getText().toString()))
+                                {
+                                    // lưu số điện thoại vào bộ nhớ
+                                    MemoryData.saveData(user.getPhoneNumberUser(), MainActivity.this);
 
-                            if (user.getPassword().equals(edtPass.getText().toString()))
-                            {
-                                // lưu số điện thoại vào bộ nhớ
-                                MemoryData.saveData(user.getPhoneNumberUser(), MainActivity.this);
+                                    // lưu tên vào bộ nhớ
+                                    MemoryData.saveName(user.getNameUser(), MainActivity.this);
 
-                                // lưu tên vào bộ nhớ
-                                MemoryData.saveName(user.getNameUser(), MainActivity.this);
-
-                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                                intent.putExtra("mobile", user.getPhoneNumberUser());
-                                intent.putExtra("name", user.getNameUser());
-                                intent.putExtra("email", user.getEmailUser());
-                                startActivity(intent);
-                                Toast.makeText(MainActivity.this,"Login success!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                    intent.putExtra("mobile", user.getPhoneNumberUser());
+                                    intent.putExtra("name", user.getNameUser());
+                                    intent.putExtra("email", user.getEmailUser());
+                                    intent.putExtra("profile_pic", user.getProfile_pic());
+                                    startActivity(intent);
+//                                Toast.makeText(MainActivity.this,"Login success!", Toast.LENGTH_SHORT).show();
+                                }
                             }
                             else
                             {

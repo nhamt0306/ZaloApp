@@ -51,12 +51,9 @@ public class SignUpActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
     }
-    private void writeNewUser(String phone, String email, String pass, String name, ImageView img)
+    private void writeNewUser(String phone, String email, String pass, String name, String profileurl)
     {
-        User user = new User(phone, pass, email, "Chưa cập nhật tên!");
+        User user = new User(phone, pass, email, "Chưa cập nhật tên!", "");
         mDatabase.child("users").child(phone).setValue(user);
-        mDatabase.child("users").child(phone).child("profile_pic").setValue("");
-
-
     }
 }

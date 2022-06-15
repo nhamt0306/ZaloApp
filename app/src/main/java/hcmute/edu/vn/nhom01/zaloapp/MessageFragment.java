@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -79,18 +80,16 @@ public class MessageFragment extends Fragment {
         progressDialog.setMessage("Loading...");
         progressDialog.show();
 
-        // lấy ảnh đại diện từ Fire base
+        // lấy ảnh đại diện từ Firebase
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-//                final String profilePicUrl = snapshot.child("users").child(mobile).child("profile_pic").getValue(String.class);
-//
-//                if (!profilePicUrl.isEmpty()) {
-//
-//                    // set profile pic cho circle image view
-//                    Picasso.get().load(profilePicUrl).into(userProfilePic);
-//                }
+                final String profilePicUrl = snapshot.child("users").child(mobile).child("profile_pic").getValue(String.class);
+
+                if (!profilePicUrl.isEmpty()) {
+                    Picasso.get().load(profilePicUrl).into(userProfilePic);
+                }
 
                 progressDialog.dismiss();
             }
@@ -104,18 +103,16 @@ public class MessageFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 messagesLists.clear();
                 unseenMessage = 0;
                 lastMessage = "";
                 chatKey = "";
                 for (DataSnapshot dataSnapshot : snapshot.child("users").getChildren()) {
-
                     final String getMobile = dataSnapshot.getKey();
 
                     dataSet = false;
                     if (!getMobile.equals(mobile)) {
-                        final String getName = dataSnapshot.child("name").getValue(String.class);
+                        final String getName = dataSnapshot.child("nameUser").getValue(String.class);
                         final String getProfilePic = dataSnapshot.child("profile_pic").getValue(String.class);
 
                         databaseReference.child("chat").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -155,7 +152,6 @@ public class MessageFragment extends Fragment {
                                     messagesLists.add(messagesList);
                                     messagesAdapter.updateData(messagesLists);
                                 }
-
                             }
 
                             @Override

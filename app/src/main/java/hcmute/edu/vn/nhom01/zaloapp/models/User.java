@@ -7,6 +7,7 @@ public class User {
     String password;
     String emailUser;
     String nameUser;
+    String profile_pic;
 
     public String getPassword() {
         return password;
@@ -16,11 +17,20 @@ public class User {
         this.password = password;
     }
 
-    public User(String phoneNumberUser, String password, String emailUser, String nameUser) {
+    public User(String phoneNumberUser, String password, String emailUser, String nameUser, String profile_pic) {
         this.phoneNumberUser = phoneNumberUser;
         this.password = password;
         this.emailUser = emailUser;
         this.nameUser = nameUser;
+        this.profile_pic = profile_pic;
+    }
+
+    public String getProfile_pic() {
+        return profile_pic;
+    }
+
+    public void setProfile_pic(String profile_pic) {
+        this.profile_pic = profile_pic;
     }
 
     public User() {

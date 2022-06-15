@@ -44,8 +44,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
         MessagesList list2 = messagesLists.get(position);
 
         if (!list2.getProfilePic().isEmpty()) {
-          //  Picasso.get().load(list2.getProfilePic()).into(holder.profilePic);
-            // có thêm Picasso vô rồi nhưng vẫn chạy k đc
+            Picasso.get().load(list2.getProfilePic()).into(holder.profilePic);
         }
 
         holder.name.setText(list2.getName());
@@ -59,7 +58,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
             holder.unseenMessages.setVisibility(View.VISIBLE);
             holder.unseenMessages.setText(list2.getUnseenMessages() + "");
             holder.lastMessage.setTextColor(context.getResources().getColor(R.color.theme_color_80));
-
         }
 
         holder.rootLayout.setOnClickListener(new View.OnClickListener() {

@@ -34,11 +34,20 @@ public class Chat extends AppCompatActivity {
     // refer database từ Firebase bằng cách truyền vào url của realtime database
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
+    // List gồm các chatList lưu lại các tin nhắn hội thoại
     private final List<ChatList> chatLists = new ArrayList<>();
+
+    // chatKey được sử dụng để phân biệt các đoạn chat khác nhau
     private String chatKey;
+
+    // getUserMobile lấy dữ liệu số điện thoại của người gửi tin nhắn
     private String getUserMobile = "";
+
+    // RecyclerView của chat
     private RecyclerView chattingRecyclerView;
     private ChatAdapter chatAdapter;
+
+    // loadingFirstTime kiểm tra xem có phải tin nhắn đầu tiên của cuộc hội thoại hay không
     private boolean loadingFirstTime = true;
 
     @Override
@@ -46,6 +55,7 @@ public class Chat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        // Ánh xạ
         final ImageView backBtn = findViewById(R.id.backBtn);
         final TextView nameTV = findViewById(R.id.name);
         final EditText messageEditTxt = findViewById(R.id.messageEditTxt);
@@ -54,21 +64,26 @@ public class Chat extends AppCompatActivity {
 
         chattingRecyclerView = findViewById(R.id.chattingRecyclerView);
 
-        // lấy dữ liệu từ message adapter class
+        // Lấy dữ liệu từ message adapter class
         final String getName = getIntent().getStringExtra("name");
         final String getProfilePic = getIntent().getStringExtra("profile_pic");
         chatKey = getIntent().getStringExtra("chat_key");
         final String getMobile = getIntent().getStringExtra("mobile");
 
-        // lấy số điện thoại người dùng từ MemoryData
+        // Lấy số điện thoại người dùng từ MemoryData
         getUserMobile = MemoryData.getData(Chat.this);
 
         nameTV.setText(getName);
-        Picasso.get().load(getProfilePic).into(profilePic);
+
+        // Load hình đại diện lên nếu có
+        if (!getProfilePic.isEmpty()) {
+            Picasso.get().load(getProfilePic).into(profilePic);
+        }
 
         chattingRecyclerView.setHasFixedSize(true);
         chattingRecyclerView.setLayoutManager(new LinearLayoutManager(Chat.this));
 
+        // Tạo adapter Chat dùng để show các đoạn chat
         chatAdapter = new ChatAdapter(chatLists, Chat.this);
         chattingRecyclerView.setAdapter(chatAdapter);
 
@@ -76,10 +91,13 @@ public class Chat extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                // Kiểm tra nếu chatKey có rỗng không
                 if (chatKey.isEmpty()) {
-                    // tạo chat key, cho giá trị default = 1
+                    // Tạo chat key, cho giá trị default = 1
                     chatKey = "1";
 
+                    // Kiểm tra xem có Child "chat" hay chưa, thực hiện tạo một chat key mới thứ tự tăng dần (1,2,3..)
                     if (snapshot.hasChild("chat")) {
                         chatKey = String.valueOf(snapshot.child("chat").getChildrenCount() + 1);
                     }
@@ -125,15 +143,16 @@ public class Chat extends AppCompatActivity {
             }
         });
 
-
+        // Xứ lý sự kiện nhấn vào nút gửi
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // Lấy tin nhắn từ edittext
                 final String getTxtMessages = messageEditTxt.getText().toString();
 
                 // lấy thời điểm nhắn tin
                 final String currentTimeStamp = String.valueOf(System.currentTimeMillis()).substring(0, 10);
-
 
                 databaseReference.child("chat").child(chatKey).child("user_1").setValue(getUserMobile);
                 databaseReference.child("chat").child(chatKey).child("user_2").setValue(getMobile);

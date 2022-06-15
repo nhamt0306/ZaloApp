@@ -22,7 +22,7 @@ public class MemoryData {
         }
     }
 
-    // Lưu dữ liệu id của cuộc hội thoại vào file có dạng "chatid".txt
+    // Lưu dữ liệu id của cuộc hội thoại vào file có dạng chatid.txt
     public static void saveLastMsgTS(String data, String chatId, Context context) {
         try {
             FileOutputStream fileOutputStream = context.openFileOutput(chatId + ".txt", Context.MODE_PRIVATE);

@@ -32,9 +32,11 @@ public class UserInfoFragment extends Fragment {
         txtLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
-                Toast.makeText(getActivity(), "Log out success!", Toast.LENGTH_SHORT).show();
+                getActivity().finish();
+//                Toast.makeText(getActivity(), "Log out success!", Toast.LENGTH_SHORT).show();
             }
         });
 
