@@ -19,6 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ImagesActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
@@ -33,6 +35,7 @@ public class ImagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_images);
         //setContentView(R.layout.fragment_feed);
+
 
         mRecyclerView=findViewById(R.id.recycler_view);
         //mRecyclerView=findViewById(R.id.recycler_view1);

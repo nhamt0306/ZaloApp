@@ -20,14 +20,19 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+
+import hcmute.edu.vn.nhom01.zaloapp.chat.Chat;
 
 public class PostActivity extends AppCompatActivity {
 
@@ -40,11 +45,15 @@ public class PostActivity extends AppCompatActivity {
     private ImageView mImageView;
     private ProgressBar mProgressBar;
     private Uri mImageUri;
+    private String getProfileUrl="";
+    private String getUserMobile = "";
+    private String getUserName = "";
 
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
 
     private StorageTask mUploadTask;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +88,18 @@ public class PostActivity extends AppCompatActivity {
                 }
             }
         });
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                getUserMobile = MemoryData.getData(PostActivity.this); // lay so dien thoai cua user de them vào firebase
+                 getProfileUrl = dataSnapshot.child("users").child(getUserMobile.toString()).child("profile_pic").getValue(String.class);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         mTextViewShowUpLoads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,11 +133,14 @@ public class PostActivity extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
+
     private  void uploadFile()   //up file lên firebase từ trang upload
     {
         if(mImageUri!=null)
         {
+
             StorageReference fileReference=mStorageRef.child(System.currentTimeMillis()+"."+getFileExtension(mImageUri)); // tham chiếu đến tập tin hình ảnh bỏ vào "uploads" trên firebase
+            //fileReference=mStorageRef.child()
             mUploadTask=fileReference.putFile(mImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -133,10 +156,19 @@ public class PostActivity extends AppCompatActivity {
                             while (!urlTask.isSuccessful());
                             Uri downloadUrl = urlTask.getResult(); // lấy địa chỉ
 
-                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),downloadUrl.toString()); // bỏ vào upload để show hình ảnh
+
+                            getUserName = MemoryData.getName(PostActivity.this); // lay so ten cua user de them vào firebase
+                            getUserMobile = MemoryData.getData(PostActivity.this); // lay so dien thoai cua user de them vào firebase
+                            System.out.println("So dien thoai"+getUserMobile.toString());
+                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),downloadUrl.toString(),getUserMobile.toString(),getUserName.toString(),getProfileUrl.toString()); // thêm text và usermobile vào firebase cùng với url
                             System.out.println("sau khi goi ham"+upload.getName());
+                            System.out.println("sau khi goi ham"+upload.getMuserMobile());
+                            System.out.println("sau khi goi ham"+ upload.getmUserName());
+                            System.out.println("day la profile url" +getProfileUrl.toString());
+                            System.out.println("sau khi goi ham"+upload.getmUserProfile());
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(upload);
+                            //mDatabaseRef.child("uploads").child(chatKey).child("user_2").setValue(getMobile);
 
 //                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
 //                            String uploadId = mDatabaseRef.push().getKey();
