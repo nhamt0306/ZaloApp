@@ -104,9 +104,7 @@ public class Chat extends AppCompatActivity {
                 }
 
                 if (snapshot.hasChild("chat")) {
-
                     if (snapshot.child("chat").child(chatKey).hasChild("messages")) {
-
                         chatLists.clear();
                         for (DataSnapshot messageSnapshot : snapshot.child("chat").child(chatKey).child("messages").getChildren()) {
                             if (messageSnapshot.hasChild("msg") && messageSnapshot.hasChild("mobile")) {
@@ -154,6 +152,7 @@ public class Chat extends AppCompatActivity {
                 // lấy thời điểm nhắn tin
                 final String currentTimeStamp = String.valueOf(System.currentTimeMillis()).substring(0, 10);
 
+                MemoryData.saveLastMsgTS(currentTimeStamp, chatKey, Chat.this);
                 databaseReference.child("chat").child(chatKey).child("user_1").setValue(getUserMobile);
                 databaseReference.child("chat").child(chatKey).child("user_2").setValue(getMobile);
                 databaseReference.child("chat").child(chatKey).child("messages").child(currentTimeStamp).child("msg").setValue(getTxtMessages);

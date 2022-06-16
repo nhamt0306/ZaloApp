@@ -161,7 +161,7 @@ public class EditAvatarActivity extends AppCompatActivity {
                             getUserMobile = MemoryData.getData(EditAvatarActivity.this); // lay so dien thoai cua user de them vào firebase
                             System.out.println(getUserMobile.toString());
                             System.out.println(downloadUrl.toString());
-                            User user=new User(downloadUrl.toString());
+//                            User user=new User(downloadUrl.toString());
                             mDatabaseRef.child(getUserMobile.toString()).child("profile_pic").setValue(downloadUrl.toString());
 
 
