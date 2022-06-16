@@ -3,6 +3,7 @@ package hcmute.edu.vn.nhom01.zaloapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,16 +58,19 @@ public class NewFeedFragment extends Fragment {
 
         mProgressCircle=view.findViewById(R.id.progress_circle_newfeed);
 
-        mUploads=new ArrayList<>(); // tạo ra 1 List các phần tử Upload(hình ảnh và text) để chứa khi đổ dữ liệu từ firebase xuống
-
-
+        mUploads = new ArrayList<>(); // tạo ra 1 List các phần tử Upload(hình ảnh và text) để chứa khi đổ dữ liệu từ firebase xuống
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mUploads.clear();
                 for(DataSnapshot postSnapshot : dataSnapshot.getChildren())//lấy databasesnapshot cho mỗi children của Upload -> để bỏ vào từng activity_item
                 {
-                    Upload upload=postSnapshot.getValue(Upload.class);
+                    String key = postSnapshot.getKey(); // Lấy key của từng bài post
+
+                    Upload upload = postSnapshot.getValue(Upload.class);
+
+                    upload.Uploadkey = key;
                     // bỏ dữ liệu vào các phẩn tử của mảng cẩn thận nếu đặt sai tên với firebase thì sẽ không bỏ vô đc
                     mUploads.add(upload);
                 }

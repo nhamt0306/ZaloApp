@@ -13,7 +13,7 @@ public class MessagesList {
         this.mobile = mobile;
         this.lastMessage = lastMessage;
         this.profilePic = profilePic;
-        UnseenMessages = unseenMessages;
+        this.UnseenMessages = unseenMessages;
         this.chatKey = chatKey;
     }
 

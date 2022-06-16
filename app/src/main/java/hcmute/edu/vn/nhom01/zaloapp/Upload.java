@@ -7,11 +7,14 @@ public class Upload {
     private String muserMobile;
     private String mUserName;
     private String mUserProfile;
+    public String Uploadkey;
+    public int Likes;
 
     public Upload()
     {
         // empty constructor method
     }
+
 
     public Upload(String name, String mImageUrl) { // constructor để input hình ảnh vào firebase
         if(name.trim().equals("")) // kiểm tra thử người dùng có đặt tên hay không nếu không thì đặt thành No name
