@@ -2,9 +2,11 @@ package hcmute.edu.vn.nhom01.zaloapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -57,6 +59,21 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 //                .fit()
 //                .centerInside() // điều chỉnh sự xuất hiện của hình ảnh
 //                .into(holder.imgUser_feed); //
+
+        // Xử lý sự kiện click like
+        holder.btnLike_newfeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
+        // Xử lý sự kiện click comment
+        holder.btnComment_newfeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
@@ -70,6 +87,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         public ImageView imageView;
         private ImageView imgUser_feed;
         private TextView txtUserName;
+        private Button btnLike_newfeed, btnComment_newfeed;
 
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +95,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             imageView = itemView.findViewById(R.id.image_view_upload);
             imgUser_feed = itemView.findViewById(R.id.imgUser_feed);  // có thể trùng tên với mấy file khác nên kiểm tra lại
             txtUserName = itemView.findViewById(R.id.txtUserName_feed);
+            btnLike_newfeed = itemView.findViewById(R.id.btnLike_newfeed);
+            btnComment_newfeed = itemView.findViewById(R.id.btnComment_newfeed);
         }
     }
 
