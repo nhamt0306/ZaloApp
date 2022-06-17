@@ -58,7 +58,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                 .into(holder.imageView); //
         Picasso.get().load(uploadCurrent.getmUserProfile()).into(holder.imgUser_feed);
 
-        holder.txtLikesAmount.setText(String.valueOf(uploadCurrent.Likes));
+        holder.txtLikesAmount.setText(String.valueOf(uploadCurrent.getLikes()));
 
 //        Picasso.get()
 //                .load(uploadCurrent.getmUserProfile())
@@ -73,7 +73,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         holder.btnLike_newfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String key = uploadCurrent.Uploadkey;
+                String key = uploadCurrent.getUploadkey();
 
                 // Lấy sđt user đang đăng nhập
                 String mobile = MemoryData.getData(mContext);
@@ -93,11 +93,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
                         // Nếu user đã like thì giảm số Like đi
                         if (liked) {
-                            mDatabase.child("uploads").child(key).child("Likes").setValue(uploadCurrent.Likes - 1);
+                            mDatabase.child("uploads").child(key).child("Likes").setValue(uploadCurrent.getLikes() - 1);
                         }
                         else { // Nếu chưa Like, thêm vào db, tăng lượt like
                             mDatabase.child("users").child(mobile).child("Likes").child(key).setValue("");
-                            mDatabase.child("uploads").child(key).child("Likes").setValue(uploadCurrent.Likes + 1);
+                            mDatabase.child("uploads").child(key).child("Likes").setValue(uploadCurrent.getLikes() + 1);
                         }
                     }
 

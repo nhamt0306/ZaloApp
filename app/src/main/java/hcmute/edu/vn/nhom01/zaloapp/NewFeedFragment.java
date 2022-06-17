@@ -70,7 +70,7 @@ public class NewFeedFragment extends Fragment {
 
                     Upload upload = postSnapshot.getValue(Upload.class);
 
-                    upload.Uploadkey = key;
+                    upload.setUploadkey(key);
                     // bỏ dữ liệu vào các phẩn tử của mảng cẩn thận nếu đặt sai tên với firebase thì sẽ không bỏ vô đc
                     mUploads.add(upload);
                 }
