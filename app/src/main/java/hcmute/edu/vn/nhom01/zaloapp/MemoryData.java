@@ -17,7 +17,7 @@ public class MemoryData {
             FileOutputStream fileOutputStream = context.openFileOutput("datata.txt", Context.MODE_PRIVATE);
             fileOutputStream.write(data.getBytes());
             fileOutputStream.close();
-        }  catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -28,7 +28,7 @@ public class MemoryData {
             FileOutputStream fileOutputStream = context.openFileOutput(chatId + ".txt", Context.MODE_PRIVATE);
             fileOutputStream.write(data.getBytes());
             fileOutputStream.close();
-        }  catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -39,7 +39,7 @@ public class MemoryData {
             FileOutputStream fileOutputStream = context.openFileOutput("nameee.txt", Context.MODE_PRIVATE);
             fileOutputStream.write(data.getBytes());
             fileOutputStream.close();
-        }  catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -57,8 +57,7 @@ public class MemoryData {
                 stringBuilder.append(line);
             }
             data = stringBuilder.toString();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return data;
@@ -77,8 +76,7 @@ public class MemoryData {
                 stringBuilder.append(line);
             }
             data = stringBuilder.toString();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return data;
@@ -97,8 +95,7 @@ public class MemoryData {
                 stringBuilder.append(line);
             }
             data = stringBuilder.toString();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return data;

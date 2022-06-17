@@ -1,4 +1,4 @@
-package hcmute.edu.vn.nhom01.zaloapp;
+package hcmute.edu.vn.nhom01.zaloapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +21,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import hcmute.edu.vn.nhom01.zaloapp.CommentShowListt;
+import hcmute.edu.vn.nhom01.zaloapp.MemoryData;
+import hcmute.edu.vn.nhom01.zaloapp.R;
+import hcmute.edu.vn.nhom01.zaloapp.models.Upload;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
 
@@ -120,7 +125,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                 System.out.println(key);
                 String abc = uploadCurrent.getMuserMobile().toString();
                 System.out.println(abc);
-                intent.putExtra("post_owner",abc); //truyền postowner tức là số điện thoại người dăng post
+                intent.putExtra("post_owner", abc); //truyền postowner tức là số điện thoại người dăng post
                 //  intent.putExtra()
                 mContext.startActivity(intent);
             }

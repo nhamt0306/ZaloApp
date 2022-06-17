@@ -1,4 +1,5 @@
-package hcmute.edu.vn.nhom01.zaloapp;
+package hcmute.edu.vn.nhom01.zaloapp.models;
+
 // Upload hinh anh cua Khoa
 public class Upload {
 
@@ -26,49 +27,51 @@ public class Upload {
         Likes = likes;
     }
 
-    public Upload()
-    {
+    public Upload() {
         // empty constructor method
     }
 
 
     public Upload(String name, String mImageUrl) { // constructor để input hình ảnh vào firebase
-        if(name.trim().equals("")) // kiểm tra thử người dùng có đặt tên hay không nếu không thì đặt thành No name
+        if (name.trim().equals("")) // kiểm tra thử người dùng có đặt tên hay không nếu không thì đặt thành No name
         {
-            name="No name";
+            name = "No name";
         }
         this.name = name;
         this.mImageUrl = mImageUrl;
     }
-    public Upload(String name, String mImageUrl,String userMobile) { // constructor để input hình ảnh vào firebase
-        if(name.trim().equals("")) // kiểm tra thử người dùng có đặt tên hay không nếu không thì đặt thành No name
+
+    public Upload(String name, String mImageUrl, String userMobile) { // constructor để input hình ảnh vào firebase
+        if (name.trim().equals("")) // kiểm tra thử người dùng có đặt tên hay không nếu không thì đặt thành No name
         {
-            name="No name";
+            name = "No name";
         }
         this.name = name;
         this.mImageUrl = mImageUrl;
-        this.muserMobile=userMobile;   // constructor này có thêm user mobile
+        this.muserMobile = userMobile;   // constructor này có thêm user mobile
     }
-    public Upload(String name, String mImageUrl,String userMobile,String UserName) { // constructor để input hình ảnh vào firebase
-        if(name.trim().equals("")) // kiểm tra thử người dùng có đặt tên hay không nếu không thì đặt thành No name
+
+    public Upload(String name, String mImageUrl, String userMobile, String UserName) { // constructor để input hình ảnh vào firebase
+        if (name.trim().equals("")) // kiểm tra thử người dùng có đặt tên hay không nếu không thì đặt thành No name
         {
-            name="No name";
+            name = "No name";
         }
         this.name = name;
         this.mImageUrl = mImageUrl;
-        this.muserMobile=userMobile;   // constructor này có thêm user mobile
-        this.mUserName=UserName;
+        this.muserMobile = userMobile;   // constructor này có thêm user mobile
+        this.mUserName = UserName;
     }
-    public Upload(String name, String mImageUrl,String userMobile,String UserName,String UserProfile) { // constructor để input hình ảnh vào firebase
-        if(name.trim().equals("")) // kiểm tra thử người dùng có đặt tên hay không nếu không thì đặt thành No name
+
+    public Upload(String name, String mImageUrl, String userMobile, String UserName, String UserProfile) { // constructor để input hình ảnh vào firebase
+        if (name.trim().equals("")) // kiểm tra thử người dùng có đặt tên hay không nếu không thì đặt thành No name
         {
-            name="No name";
+            name = "No name";
         }
         this.name = name;
         this.mImageUrl = mImageUrl;
-        this.muserMobile=userMobile;   // constructor này có thêm user mobile
-        this.mUserName=UserName;
-        this.mUserProfile=UserProfile;
+        this.muserMobile = userMobile;   // constructor này có thêm user mobile
+        this.mUserName = UserName;
+        this.mUserProfile = UserProfile;
     }
 
     public String getmUserProfile() {

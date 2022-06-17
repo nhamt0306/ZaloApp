@@ -3,7 +3,6 @@ package hcmute.edu.vn.nhom01.zaloapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -19,46 +18,44 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import hcmute.edu.vn.nhom01.zaloapp.adapters.CommentAdapter;
 
 public class CommentShowListt extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private CommentAdapter_test mAdapter;
+    private CommentAdapter mAdapter;
     private ProgressBar mProgressCircle;
     private Integer getCommentCount;
-    private String getProfileUrl="";  // chứa link ảnh profile của người dùng
+    private String getProfileUrl = "";  // chứa link ảnh profile của người dùng
     private String getUserMobile = ""; // chứa số điện thoại của người dùng
     private String getUserName = "";   // chứa tên của người dùng
-    private String post_key="";       // chứa postid được lấy từ intent
-    private String post_owner="";     // chứa postowner được lấy từ intent
+    private String post_key = "";       // chứa postid được lấy từ intent
+    private String post_owner = "";     // chứa postowner được lấy từ intent
     private ImageButton btnSendText;   // btn gửi comment
     private EditText edt_InputComment;
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     private DatabaseReference mDatabaseRef;
-    private DatabaseReference mDatabaseRef_foradapter;   // dataref này dành cho adapter bởi nếu xài chung thì sẽ bị lỗi  vì cái ở trên không cần dẫn vào post_key cũng dudojc nwhng ca
+    private DatabaseReference mDatabaseRef_foradapter;   // dataref này dành cho adapter bởi nếu xài chung thì sẽ bị lỗi  vì cái ở trên không cần dẫn vào post_key cũng được nhưng cái
     // này cần để dẫn vào lấy các phần tử comment bài post đó ra
     private List<Comments> mComments;  // bỏ item vô list , chứa các Commments
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.comment);
 
-        String mobile=MemoryData.getData(CommentShowListt.this); // lấy số điện thoại để truyền vào hàm bên dưới
+        String mobile = MemoryData.getData(CommentShowListt.this); // lấy số điện thoại để truyền vào hàm bên dưới
 
 
-        btnSendText=findViewById(R.id.sendText);
-        edt_InputComment=findViewById(R.id.ImputComment);
-
+        btnSendText = findViewById(R.id.sendText);
+        edt_InputComment = findViewById(R.id.ImputComment);
 
 
         final CircleImageView userProfilePic = findViewById(R.id.userProfilePic); // lấy ảnh đại diện cho user
@@ -70,7 +67,7 @@ public class CommentShowListt extends AppCompatActivity {
                 getUserMobile = MemoryData.getData(CommentShowListt.this); // lay so dien thoai cua user de them vào firebase
 
                 final String profilePicUrl = snapshot.child("users").child(mobile).child("profile_pic").getValue(String.class);
-                getCommentCount=(int)snapshot.child("comments").child(post_key).getChildrenCount();  //này dùng để lấy số lượng child có trong child post_key với giá trị tương ứng
+                getCommentCount = (int) snapshot.child("comments").child(post_key).getChildrenCount();  //này dùng để lấy số lượng child có trong child post_key với giá trị tương ứng
                 getProfileUrl = snapshot.child("users").child(getUserMobile.toString()).child("profile_pic").getValue(String.class);  // lấy link ảnh profile của user
 
                 // Nếu Url không rỗng, thực hiện đẩy dữ liệu hình lên userProfilePic
@@ -88,35 +85,26 @@ public class CommentShowListt extends AppCompatActivity {
         });
 
 
-        post_key=getIntent().getStringExtra("post_key_show");  // lấy postid từ intent
-        post_owner=getIntent().getStringExtra("post_owner");   // lấy postowner từ intent
+        post_key = getIntent().getStringExtra("post_key_show");  // lấy postid từ intent
+        post_owner = getIntent().getStringExtra("post_owner");   // lấy postowner từ intent
 
-        mDatabaseRef= FirebaseDatabase.getInstance().getReference("comments");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("comments");
 
         // ở đây có 2 databaseref dùng cho 2 cái 1 cái dùng cho việc thêm vào firebase
         // cái dưới dùng cho adapter
 
-        mDatabaseRef_foradapter= FirebaseDatabase.getInstance().getReference("comments/"+post_key);
+        mDatabaseRef_foradapter = FirebaseDatabase.getInstance().getReference("comments/" + post_key);
 
 
-
-      //  post_key=getIntent().getStringExtra("post_key");
-
-
-
-
-        mRecyclerView=findViewById(R.id.recycler_view_newfeed);
-        //mRecyclerView=findViewById(R.id.recycler_view1);
+        mRecyclerView = findViewById(R.id.recycler_view_newfeed);
 
         mRecyclerView.setHasFixedSize(true); // fix size
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mProgressCircle=findViewById(R.id.progress_circle_newfeed);
-        //mProgressCircle=findViewById(R.id.progress_circle1);
+        mProgressCircle = findViewById(R.id.progress_circle_newfeed);
 
 
-        mComments=new ArrayList<>(); // tạo ra 1 List các phần tử Upload(hình ảnh và text) để chứa khi đổ dữ liệu từ firebase xuống
-
+        mComments = new ArrayList<>(); // tạo ra 1 List các phần tử Upload(hình ảnh và text) để chứa khi đổ dữ liệu từ firebase xuống
 
 
         btnSendText.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +117,7 @@ public class CommentShowListt extends AppCompatActivity {
                         getUserMobile = MemoryData.getData(CommentShowListt.this); // lay so dien thoai cua user de them vào firebase
 
                         final String profilePicUrl = snapshot.child("users").child(mobile).child("profile_pic").getValue(String.class);
-                        getCommentCount=(int)snapshot.child("comments").child(post_key).getChildrenCount();  // lấy comment count trong từng postid
+                        getCommentCount = (int) snapshot.child("comments").child(post_key).getChildrenCount();  // lấy comment count trong từng postid
 
                         getProfileUrl = snapshot.child("users").child(getUserMobile.toString()).child("profile_pic").getValue(String.class); // lấy link profile picture
 
@@ -154,46 +142,37 @@ public class CommentShowListt extends AppCompatActivity {
 
         mDatabaseRef_foradapter.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange( DataSnapshot dataSnapshot) {
-                for(DataSnapshot postSnapshot : dataSnapshot.getChildren())//lấy databasesnapshot cho mỗi children của Upload -> để bỏ vào từng activity_item
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren())//lấy databasesnapshot cho mỗi children của Upload -> để bỏ vào từng activity_item
                 {
-                    System.out.println("postsnapshot"+postSnapshot.getValue(Comments.class));
-                    Comments comments=postSnapshot.getValue(Comments.class);  // bỏ dữ liệu vào các phẩn tử của mảng cẩn thận nếu đặt sai tên với firebase thì sẽ không bỏ vô đc
-                    System.out.println("in comment ne"+comments.getComment());
-                    System.out.println("in comment ne"+comments.getmPostid());
-                    System.out.println("in comment ne"+comments.getmPostOwner());
-                    System.out.println("in comment ne"+comments.getMuserMobile());
-                    System.out.println("in comment ne"+comments.getmUserName());
-                    System.out.println("in comment ne"+comments.getmUserProfile());
+                    Comments comments = postSnapshot.getValue(Comments.class);  // bỏ dữ liệu vào các phẩn tử của mảng cẩn thận nếu đặt sai tên với firebase thì sẽ không bỏ vô đc
                     mComments.add(comments);
                 }
-                mAdapter=new CommentAdapter_test(CommentShowListt.this,mComments); // đổ dữ liệu vào adapter
-                System.out.println("Comment Activity: "+mAdapter.toString());
+                mAdapter = new CommentAdapter(CommentShowListt.this, mComments); // đổ dữ liệu vào adapter
+                System.out.println("Comment Activity: " + mAdapter.toString());
                 mRecyclerView.setAdapter(mAdapter); // đổ dữ liệu vào recycler
                 mProgressCircle.setVisibility(View.INVISIBLE);
             }
 
             @Override
-            public void onCancelled( DatabaseError databaseError) { // canncel quá trình
-                Toast.makeText(CommentShowListt.this,databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+            public void onCancelled(DatabaseError databaseError) { // canncel quá trình
+                Toast.makeText(CommentShowListt.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void uploadComment() {
-//        DataSnapshot snapshot=null;
-//        getCommentCount=(int)snapshot.child("comments").child(post_key).getChildrenCount();
         getUserName = MemoryData.getName(CommentShowListt.this); // lay so ten cua user de them vào firebase
         getUserMobile = MemoryData.getData(CommentShowListt.this); // lay so dien thoai cua user de them vào firebase
-        String post_key=getIntent().getStringExtra("post_key_show");
-        String post_owner=getIntent().getStringExtra("post_owner");
+        String post_key = getIntent().getStringExtra("post_key_show");
+        String post_owner = getIntent().getStringExtra("post_owner");
 
-        Comments comments=new Comments(post_key,getUserMobile.toString(),post_owner,getUserName.toString(),getProfileUrl.toString(),edt_InputComment.getText().toString().trim());
+        Comments comments = new Comments(post_key, getUserMobile.toString(), post_owner, getUserName.toString(), getProfileUrl.toString(), edt_InputComment.getText().toString().trim());
         // lấy theo thứ tự trong constructor được tạo bên class Comments
 
         mDatabaseRef.child(post_key).child(getCommentCount.toString()).setValue(comments);
 
-        Intent intent=new Intent(CommentShowListt.this,CommentShowListt.class); // start intent lần nữa để load lại
+        Intent intent = new Intent(CommentShowListt.this, CommentShowListt.class); // start intent lần nữa để load lại
         intent.putExtra("post_key_show", post_key);
         startActivity(intent);
     }

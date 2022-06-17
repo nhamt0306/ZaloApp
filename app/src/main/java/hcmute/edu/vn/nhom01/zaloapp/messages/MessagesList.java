@@ -8,7 +8,7 @@ public class MessagesList {
     private int UnseenMessages;
 
     // Constructor
-    public MessagesList(String name, String mobile, String lastMessage, String profilePic,int unseenMessages, String chatKey) {
+    public MessagesList(String name, String mobile, String lastMessage, String profilePic, int unseenMessages, String chatKey) {
         this.name = name;
         this.mobile = mobile;
         this.lastMessage = lastMessage;

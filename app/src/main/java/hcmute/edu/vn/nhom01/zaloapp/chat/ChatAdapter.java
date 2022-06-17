@@ -52,7 +52,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             holder.oppoLayout.setVisibility(View.GONE);
 
             holder.myMessage.setText(list2.getMessage());
-            holder.myMessageTime.setText(list2.getDate()+ " " + list2.getTime());
+            holder.myMessageTime.setText(list2.getDate() + " " + list2.getTime());
         }
         // Nếu là tin nhắn của đối phương thì hiển thị layout oppoLayout, set nội dung tin nhắn cho oppoMessage và hiển thị thời gian trên oppoMessageTime
         else {
@@ -60,7 +60,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             holder.oppoLayout.setVisibility(View.VISIBLE);
 
             holder.oppoMessage.setText(list2.getMessage());
-            holder.oppoMessageTime.setText(list2.getDate()+ " " + list2.getTime());
+            holder.oppoMessageTime.setText(list2.getDate() + " " + list2.getTime());
 
         }
     }

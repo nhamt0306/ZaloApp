@@ -22,22 +22,32 @@
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/menu/menu_nav.xml" value="0.1" />
         <entry key="..\:/Download/LT_Android/ZaloApp/app/src/main/res/menu/menu_navigation.xml" value="0.25" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/drawable-v24/round_back_light_10.xml" value="0.201" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.192" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.192" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/activity_chat.xml" value="0.264" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/activity_edit_avatar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/activity_images.xml" value="0.264" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/activity_post.xml" value="0.1421875" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/chat_adapter_layout.xml" value="0.264" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/comment.xml" value="0.2" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/comment_activity.xml" value="0.1421875" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/comment_item.xml" value="0.1421875" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/edit_profile_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/fragment_contact.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/fragment_feed.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/fragment_info.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/fragment_message.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/fragment_messages.xml" value="0.19166666666666668" />
-        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/home_layout.xml" value="0.11302083333333333" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/home_layout.xml" value="0.264" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/image_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/login_layout.xml" value="0.1537037037037037" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/message_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/message_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/messages_adapter_layout.xml" value="0.264" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/signup_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/layout/user_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Nam3-HK2/LapTrinhDiDong/FINAL_PROJECT/Zalo/app/src/main/res/menu/menu_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ZaloApp/app/src/main/res/layout/activity_chat.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ZaloApp/app/src/main/res/layout/activity_edit_avatar.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/ZaloApp/app/src/main/res/layout/activity_editavatar.xml" value="0.17552083333333332" />

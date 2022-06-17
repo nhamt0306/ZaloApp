@@ -21,6 +21,7 @@ public class UserInfoFragment extends Fragment {
     private TextView txtLogout, txtCloud, txtEditProfile, txtSetting;
     private TextView txtUserName;
     private CircleImageView imgUser;
+
     public UserInfoFragment() {
         // Required empty public constructor
     }
@@ -37,7 +38,7 @@ public class UserInfoFragment extends Fragment {
         txtSetting = view.findViewById(R.id.txtSetting);
         txtUserName = view.findViewById(R.id.txtUserName);
         imgUser = view.findViewById(R.id.imgUser);
-        btn_EditAvatar=view.findViewById(R.id.btnEditImage);
+        btn_EditAvatar = view.findViewById(R.id.btnEditImage);
 
         setData();
 
@@ -56,11 +57,10 @@ public class UserInfoFragment extends Fragment {
         btn_EditAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( getActivity(),EditAvatarActivity.class);
+                Intent intent = new Intent(getActivity(), EditAvatarActivity.class);
                 startActivity(intent);
             }
         });
-
 
 
         txtCloud.setOnClickListener(new View.OnClickListener() {

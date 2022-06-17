@@ -1,4 +1,4 @@
-package hcmute.edu.vn.nhom01.zaloapp;
+package hcmute.edu.vn.nhom01.zaloapp.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,15 +14,16 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import hcmute.edu.vn.nhom01.zaloapp.Comments;
+import hcmute.edu.vn.nhom01.zaloapp.R;
 
-public class CommentAdapter_test extends RecyclerView.Adapter<CommentAdapter_test.ImageViewHolder> {
+public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageViewHolder> {
 
     private Context mContext;
     private List<Comments> mComments;
 
 
-    public CommentAdapter_test(Context context, List<Comments> comments) {
+    public CommentAdapter(Context context, List<Comments> comments) {
         mContext = context;
         mComments = comments;
     }

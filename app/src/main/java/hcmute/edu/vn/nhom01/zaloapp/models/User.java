@@ -1,6 +1,7 @@
 package hcmute.edu.vn.nhom01.zaloapp.models;
 
 import android.widget.ImageView;
+
 // Class lưu thông tin của từng User
 public class User {
     // Số điện thoại người dùng
@@ -23,9 +24,9 @@ public class User {
         this.nameUser = nameUser;
         this.profile_pic = profile_pic;
     }
-    public User(String profile_pic)
-    {
-        this.profile_pic=profile_pic;
+
+    public User(String profile_pic) {
+        this.profile_pic = profile_pic;
     }
 
     // Contructor rỗng

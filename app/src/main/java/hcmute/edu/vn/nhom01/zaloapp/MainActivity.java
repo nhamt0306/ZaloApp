@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edtPhone, edtPass;
     ArrayList<User> listUsers = null;
     DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +52,9 @@ public class MainActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (edtPhone.getText().toString().equals("") || edtPass.getText().toString().equals(""))
-                {
+                if (edtPhone.getText().toString().equals("") || edtPass.getText().toString().equals("")) {
                     Toast.makeText(MainActivity.this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                } else {
                     mDatabase = FirebaseDatabase.getInstance().getReference();
 //                     Lấy dữ liệu từ Firebase
                     mDatabase.child("users").child(edtPhone.getText().toString()).addValueEventListener(new ValueEventListener() {
@@ -64,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             User user = dataSnapshot.getValue(User.class);
                             if (user != null) {
-                                if (user.getPassword().equals(edtPass.getText().toString()))
-                                {
+                                if (user.getPassword().equals(edtPass.getText().toString())) {
                                     // lưu số điện thoại vào bộ nhớ
                                     MemoryData.saveData(user.getPhoneNumberUser(), MainActivity.this);
 
@@ -78,18 +75,15 @@ public class MainActivity extends AppCompatActivity {
                                     intent.putExtra("email", user.getEmailUser());
                                     intent.putExtra("profile_pic", user.getProfile_pic());
                                     startActivity(intent);
-//                                Toast.makeText(MainActivity.this,"Login success!", Toast.LENGTH_SHORT).show();
                                 }
-                            }
-                            else
-                            {
-                                Toast.makeText(MainActivity.this,"Login fail!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(MainActivity.this, "Login fail!", Toast.LENGTH_SHORT).show();
                             }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-                            Toast.makeText(MainActivity.this,"Get data fail!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Get data fail!", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -115,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 ds.setUnderlineText(false);
             }
         };
-        ss2.setSpan(clickableSpan,0,16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss2.setSpan(clickableSpan, 0, 16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         txtForgotPass.setText(ss2);
         txtForgotPass.setMovementMethod(LinkMovementMethod.getInstance());
     }
@@ -137,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 ds.setColor(Color.BLACK);
             }
         };
-        ss.setSpan(clickableSpan,23,30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(clickableSpan, 23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         txtSignUp.setText(ss);
         txtSignUp.setMovementMethod(LinkMovementMethod.getInstance());
     }

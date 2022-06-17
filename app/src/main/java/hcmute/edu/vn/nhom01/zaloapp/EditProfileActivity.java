@@ -25,11 +25,11 @@ public class EditProfileActivity extends AppCompatActivity {
     private Button btnSaveInfo;
     private DatabaseReference databaseReference;
     private Button btn_EditAvatar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_profile_layout);
-
 
 
         imgUserEditProfile = findViewById(R.id.imgUserEditProfile);
@@ -76,6 +76,12 @@ public class EditProfileActivity extends AppCompatActivity {
         btnSaveInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String email = edtEmailProfile.getText().toString().trim();
+
+                if (!CheckValid.isEmailValid(email)) {
+                    Toast.makeText(EditProfileActivity.this, "Email không hợp lệ!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 databaseReference.child("users").child(mobile).child("nameUser").setValue(edtNameProfile.getText().toString().trim());
                 databaseReference.child("users").child(mobile).child("emailUser").setValue(edtEmailProfile.getText().toString().trim());
             }
