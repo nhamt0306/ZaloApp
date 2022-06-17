@@ -23,6 +23,10 @@ public class User {
         this.nameUser = nameUser;
         this.profile_pic = profile_pic;
     }
+    public User(String profile_pic)
+    {
+        this.profile_pic=profile_pic;
+    }
 
     // Contructor rỗng
     public User() {

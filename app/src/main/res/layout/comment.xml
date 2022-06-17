@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    tools:context=".CommentShow_test">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--        Header tìm kiếm-->
+        <RelativeLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/yellow">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_theme_light"
+                android:src="@drawable/new_feed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Bình luận"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <!--            <ImageButton-->
+            <!--                android:id="@+id/add_new_feed"-->
+            <!--                android:layout_width="50dp"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_alignParentEnd="true"-->
+            <!--                android:layout_centerVertical="true"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:layout_marginRight="20dp"-->
+            <!--                android:layout_marginBottom="10dp"-->
+            <!--                android:background="@drawable/round_theme_light"-->
+            <!--                android:padding="4dp"-->
+            <!--                android:src="@drawable/add_new_feed" />-->
+        </RelativeLayout>
+
+        <!--        <ListView-->
+        <!--            android:id="@+id/message_RecyclerView"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="580dp">-->
+        <!--        </ListView>-->
+        <ProgressBar
+            android:id="@+id/progress_circle_newfeed"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/topBar"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_newfeed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/topBar"
+            android:layout_marginTop="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userProfilePic"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentEnd="false"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/people_icon" />
+
+
+                <EditText
+                    android:id="@+id/ImputComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/userProfilePic"
+                    android:hint="Type your comment" />
+
+                <ImageButton
+                    android:id="@+id/sendText"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="362dp"
+                    android:src="@drawable/send_text" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</FrameLayout>

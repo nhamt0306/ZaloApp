@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -31,9 +32,13 @@ import hcmute.edu.vn.nhom01.zaloapp.messages.MessagesList;
 public class NewFeedFragment extends Fragment {
 
     private ImageButton btn_add_post;
+    private Button btn_like;
+    private Button btn_comment;
+
     private RecyclerView mRecyclerView;
     private ImageAdapter mAdapter;
     private ProgressBar mProgressCircle;
+
 
 
     private DatabaseReference mDatabaseRef;
@@ -48,7 +53,6 @@ public class NewFeedFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
         btn_add_post = view.findViewById(R.id.add_new_feed);
-
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("uploads");
         Context context=inflater.getContext();
         mRecyclerView=view.findViewById(R.id.recycler_view_newfeed);

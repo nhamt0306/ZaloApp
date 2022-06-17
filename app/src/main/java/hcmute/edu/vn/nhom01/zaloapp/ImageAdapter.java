@@ -1,8 +1,7 @@
 package hcmute.edu.vn.nhom01.zaloapp;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -24,13 +22,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-import hcmute.edu.vn.nhom01.zaloapp.messages.MessagesList;
-
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
 
     private Context mContext;
     private List<Upload> mUploads;
+
 
     public ImageAdapter(Context context, List<Upload> uploads) {
         mContext = context;
@@ -50,13 +46,18 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         holder.textViewName.setText(uploadCurrent.getName());
         holder.txtUserName.setText(uploadCurrent.getmUserName());
 
+
         Picasso.get()
                 .load(uploadCurrent.getmImageUrl())
                 .placeholder(R.mipmap.ic_launcher) // thay thế cho hình ảnh khi nó chưa kịp load lên
                 .fit()
                 .centerInside() // điều chỉnh sự xuất hiện của hình ảnh
                 .into(holder.imageView); //
-        Picasso.get().load(uploadCurrent.getmUserProfile()).into(holder.imgUser_feed);
+        Picasso.get().load(uploadCurrent.getmUserProfile())
+                .placeholder(R.mipmap.ic_launcher)
+                .fit()
+                .centerInside()
+                .into(holder.imgUser_feed);
 
         holder.txtLikesAmount.setText(String.valueOf(uploadCurrent.getLikes()));
 
@@ -68,7 +69,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 //                .into(holder.imgUser_feed); //
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-
         // Xử lý sự kiện click like
         holder.btnLike_newfeed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,8 +94,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                         // Nếu user đã like thì giảm số Like đi
                         if (liked) {
                             mDatabase.child("uploads").child(key).child("Likes").setValue(uploadCurrent.getLikes() - 1);
-                        }
-                        else { // Nếu chưa Like, thêm vào db, tăng lượt like
+                        } else { // Nếu chưa Like, thêm vào db, tăng lượt like
                             mDatabase.child("users").child(mobile).child("Likes").child(key).setValue("");
                             mDatabase.child("uploads").child(key).child("Likes").setValue(uploadCurrent.getLikes() + 1);
                         }
@@ -114,7 +113,16 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         holder.btnComment_newfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(mContext, CommentShowListt.class);
+                //  String key=
+                String key = uploadCurrent.getUploadkey().toString();
+                intent.putExtra("post_key_show", key);      // truyền post_id qua để có thể sử dụng tham chiếu đến post trên firebase
+                System.out.println(key);
+                String abc = uploadCurrent.getMuserMobile().toString();
+                System.out.println(abc);
+                intent.putExtra("post_owner",abc); //truyền postowner tức là số điện thoại người dăng post
+                //  intent.putExtra()
+                mContext.startActivity(intent);
             }
         });
     }
