@@ -102,10 +102,13 @@ public class Chat extends AppCompatActivity {
                         chatKey = String.valueOf(snapshot.child("chat").getChildrenCount() + 1);
                     }
                 }
-
+                // Kiểm tra xem đã có đoạn chat nào chưa
                 if (snapshot.hasChild("chat")) {
+                    // Nếu có, kiểm tra xem trong chatKey có dòng tin nhắn nào chưa
                     if (snapshot.child("chat").child(chatKey).hasChild("messages")) {
+                        // Clear chatlist
                         chatLists.clear();
+                        // Duyệt từng phần từ trong messages để lấy ra từng dòng tin nhắn
                         for (DataSnapshot messageSnapshot : snapshot.child("chat").child(chatKey).child("messages").getChildren()) {
                             if (messageSnapshot.hasChild("msg") && messageSnapshot.hasChild("mobile")) {
                                 final String messageTimestamps = messageSnapshot.getKey();
@@ -164,6 +167,7 @@ public class Chat extends AppCompatActivity {
             }
         });
 
+        // Xử lý sự kiện nhấn vào nút Back sẽ trở về trang chủ
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
