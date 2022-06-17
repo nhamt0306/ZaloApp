@@ -7,8 +7,24 @@ public class Upload {
     private String muserMobile;
     private String mUserName;
     private String mUserProfile;
-    public String Uploadkey;
-    public int Likes;
+    private String Uploadkey;
+    private int Likes;
+
+    public String getUploadkey() {
+        return Uploadkey;
+    }
+
+    public void setUploadkey(String uploadkey) {
+        Uploadkey = uploadkey;
+    }
+
+    public int getLikes() {
+        return Likes;
+    }
+
+    public void setLikes(int likes) {
+        Likes = likes;
+    }
 
     public Upload()
     {
