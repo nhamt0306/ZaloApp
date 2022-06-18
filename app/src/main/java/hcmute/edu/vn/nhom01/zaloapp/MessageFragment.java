@@ -130,15 +130,15 @@ public class MessageFragment extends Fragment {
             }
         });
 
-        makefriend.setOnClickListener(new View.OnClickListener() {
-            @Override
+        makefriend.setOnClickListener(new View.OnClickListener() {  // nhấn vào biểu tượng kính lúp để
+            @Override                                        // tìm kiếm bạn bè
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(),MakeFriendActivity.class);
                 startActivity(intent);
             }
         });
-        AcceptFriend.setOnClickListener(new View.OnClickListener() {
-            @Override
+        AcceptFriend.setOnClickListener(new View.OnClickListener() { // nhấn vào biểu tượng thêm bạn bè
+            @Override                                               // để thêm bạn bè
             public void onClick(View v) {
                 Intent intent =new Intent(getActivity(),AcceptFriendActivity.class);
                 startActivity(intent);

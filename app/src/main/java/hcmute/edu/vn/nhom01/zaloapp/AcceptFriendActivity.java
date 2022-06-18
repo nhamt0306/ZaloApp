@@ -41,17 +41,21 @@ public class AcceptFriendActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_friend);
 
+        // ánh xạ đến recycler
         mRecyclerView = findViewById(R.id.recycler_view_acceptfriend);
 
         mRecyclerView.setHasFixedSize(true); // fix size
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // ánh xạ đến progresscircle
         mProgressCircle = findViewById(R.id.progress_circle_newfeed);
 
 
         mUploads = new ArrayList<>(); // tạo ra 1 List các phần tử Upload(hình ảnh và text) để chứa khi đổ dữ liệu từ firebase xuống
         getUserMobile = MemoryData.getData(AcceptFriendActivity.this); // lay so dien thoai cua user de them vào firebase
 
+
+        //
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("makefriend/"+getUserMobile.toString());
 
 
@@ -62,10 +66,10 @@ public class AcceptFriendActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren())//lấy databasesnapshot cho mỗi children của Upload -> để bỏ vào từng activity_item
                 {
                     MakeFriendRequest upload = postSnapshot.getValue(MakeFriendRequest.class);  // bỏ dữ liệu vào các phẩn tử của mảng cẩn thận nếu đặt sai tên với firebase thì sẽ không bỏ vô đc
-                    mUploads.add(upload);
+                    mUploads.add(upload); // thêm phần tử vào list
                 }
-                mAdapter = new MakeFriendAdapter(AcceptFriendActivity.this, mUploads);
-                mRecyclerView.setAdapter(mAdapter);
+                mAdapter = new MakeFriendAdapter(AcceptFriendActivity.this, mUploads); // bỏ vào adapter
+                mRecyclerView.setAdapter(mAdapter); // đổ từ adapter vào recycler
                 mProgressCircle.setVisibility(View.INVISIBLE);
             }
 

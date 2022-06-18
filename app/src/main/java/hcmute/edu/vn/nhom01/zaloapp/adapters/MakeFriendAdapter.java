@@ -32,7 +32,7 @@ import hcmute.edu.vn.nhom01.zaloapp.models.Upload;
 public class MakeFriendAdapter extends RecyclerView.Adapter<MakeFriendAdapter.ImageViewHolder> {
 
     private Context mContext;
-    private List<MakeFriendRequest> mMakeFriend;
+    private List<MakeFriendRequest> mMakeFriend;  // tạo 1 list từ class MakeFriendRequest để tham chiếu
 
 
     public MakeFriendAdapter(Context context, List<MakeFriendRequest> uploads) {
@@ -52,23 +52,15 @@ public class MakeFriendAdapter extends RecyclerView.Adapter<MakeFriendAdapter.Im
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         MakeFriendRequest uploadCurrent = mMakeFriend.get(position);
         holder.txtUserName.setText(uploadCurrent.getmSender_name()); // lấy username
-  //      Picasso.get().load(uploadCurrent.getmUserProfile()).into(holder.imgUser_feed); // lấy ảnh đại diện của user
-
-//        Picasso.get()
-//                .load(uploadCurrent.getmUserProfile())
-//                .placeholder(R.mipmap.ic_launcher) // thay thế cho hình ảnh khi nó chưa kịp load lên
-//                .fit()
-//                .centerInside() // điều chỉnh sự xuất hiện của hình ảnh
-//                .into(holder.imgUser_feed); //
 
 
 
 
-        holder.btnAccept.setOnClickListener(new View.OnClickListener() {
+        holder.btnAccept.setOnClickListener(new View.OnClickListener() { // bắt sự kiện click vào button accept
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(mContext, Friends.class);
-                String abc = uploadCurrent.getmSender_mobile().toString();
+                String abc = uploadCurrent.getmSender_mobile().toString(); // truyền vào sdt của người gửi request
                 intent.putExtra("sender", abc); //truyền postowner tức là số điện thoại người dăng post
                 mContext.startActivity(intent);
             }
@@ -90,8 +82,8 @@ public class MakeFriendAdapter extends RecyclerView.Adapter<MakeFriendAdapter.Im
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
          //   imgUser_feed = itemView.findViewById(R.id.imgUser_comment);  // có thể trùng tên với mấy file khác nên kiểm tra lại
-            txtUserName = itemView.findViewById(R.id.txtUserName_comment);
-            btnAccept=itemView.findViewById(R.id.btnAccept);
+            txtUserName = itemView.findViewById(R.id.txtUserName_comment); // ánh xạ đến UserName
+            btnAccept=itemView.findViewById(R.id.btnAccept); // ánh xja đến button accept
         }
     }
 
