@@ -181,7 +181,7 @@ public class PostActivity extends AppCompatActivity {
                             Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString(), getUserMobile.toString(), getUserName.toString(), getProfileUrl.toString()); // thêm text,imageurl và usermobile,username vào firebase cùng với url
                             String uploadId = mDatabaseRef.push().getKey(); // lấy uploadid -- ở đây có nghĩa là key của upload  hay có thể hiểu là postid
                             mDatabaseRef.child(uploadId).setValue(upload); // đẩy vào firebase
-
+                            mDatabaseRef.child(uploadId).child("likes").removeValue();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() { // nếu không thành côngg
