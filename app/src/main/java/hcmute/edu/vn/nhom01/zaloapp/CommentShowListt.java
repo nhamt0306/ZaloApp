@@ -27,22 +27,24 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import hcmute.edu.vn.nhom01.zaloapp.adapters.CommentAdapter;
 
 public class CommentShowListt extends AppCompatActivity {
-    private RecyclerView mRecyclerView;
-    private CommentAdapter mAdapter;
+    private RecyclerView mRecyclerView;  // để ánh xja đến recyclerview
+    private CommentAdapter mAdapter;  // tạo ra adapter từ CommentAdapter
     private ProgressBar mProgressCircle;
-    private Integer getCommentCount;
+    private Integer getCommentCount; // lấy số lượng comment hiện có của bài post
     private String getProfileUrl = "";  // chứa link ảnh profile của người dùng
     private String getUserMobile = ""; // chứa số điện thoại của người dùng
     private String getUserName = "";   // chứa tên của người dùng
     private String post_key = "";       // chứa postid được lấy từ intent
     private String post_owner = "";     // chứa postowner được lấy từ intent
     private ImageButton btnSendText;   // btn gửi comment
-    private EditText edt_InputComment;
+    private EditText edt_InputComment;  // edittext để chứa comment
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    // getinstance firebase
 
     private DatabaseReference mDatabaseRef;
-    private DatabaseReference mDatabaseRef_foradapter;   // dataref này dành cho adapter bởi nếu xài chung thì sẽ bị lỗi  vì cái ở trên không cần dẫn vào post_key cũng được nhưng cái
+    private DatabaseReference mDatabaseRef_foradapter;   // dataref này dành cho adapter bởi nếu xài chung thì sẽ bị lỗi
+    // vì cái ở trên không cần dẫn vào post_key cũng được nhưng cái
     // này cần để dẫn vào lấy các phần tử comment bài post đó ra
     private List<Comments> mComments;  // bỏ item vô list , chứa các Commments
 
@@ -164,13 +166,15 @@ public class CommentShowListt extends AppCompatActivity {
     private void uploadComment() {
         getUserName = MemoryData.getName(CommentShowListt.this); // lay so ten cua user de them vào firebase
         getUserMobile = MemoryData.getData(CommentShowListt.this); // lay so dien thoai cua user de them vào firebase
-        String post_key = getIntent().getStringExtra("post_key_show");
-        String post_owner = getIntent().getStringExtra("post_owner");
+        String post_key = getIntent().getStringExtra("post_key_show");  // get intent để lấy postid
+        String post_owner = getIntent().getStringExtra("post_owner"); // get intent dẻ lấy post owner
 
         Comments comments = new Comments(post_key, getUserMobile.toString(), post_owner, getUserName.toString(), getProfileUrl.toString(), edt_InputComment.getText().toString().trim());
         // lấy theo thứ tự trong constructor được tạo bên class Comments
 
         mDatabaseRef.child(post_key).child(getCommentCount.toString()).setValue(comments);
+        // đổ vào firebase
+
 
         Intent intent = new Intent(CommentShowListt.this, CommentShowListt.class); // start intent lần nữa để load lại
         intent.putExtra("post_key_show", post_key);

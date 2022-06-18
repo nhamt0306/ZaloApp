@@ -1,8 +1,9 @@
 package hcmute.edu.vn.nhom01.zaloapp;
 
 public class Comments {
+
+    // Biến lưu postid,usermobile,postowner,username,userprofile,comment của user
     private String mPostid;
-    //  private String mImageUrl;
     private String muserMobile;
     private String mPostOwner;
     private String mUserName;
@@ -23,6 +24,7 @@ public class Comments {
         this.mComment = Comment;
     }
 
+    //getter và setter của postid,usermobile,postowner,username,userprofile,comment
     public String getmPostid() {
         return mPostid;
     }

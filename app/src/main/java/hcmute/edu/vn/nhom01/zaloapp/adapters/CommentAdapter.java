@@ -38,9 +38,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Comments uploadCurrent = mComments.get(position);
-        holder.textViewName.setText(uploadCurrent.getComment()); // lấy đoạn comment
-        holder.txtUserName.setText(uploadCurrent.getmUserName()); // lấy username
-        Picasso.get().load(uploadCurrent.getmUserProfile()).into(holder.imgUser_feed); // lấy ảnh đại diện của user
+        holder.textViewName.setText(uploadCurrent.getComment()); // set đoạn comment
+        holder.txtUserName.setText(uploadCurrent.getmUserName()); // set username
+        Picasso.get().load(uploadCurrent.getmUserProfile()).into(holder.imgUser_feed); // set ảnh đại diện của user
     }
 
     @Override
@@ -50,16 +50,16 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
 
 
     static class ImageViewHolder extends RecyclerView.ViewHolder {
-        public TextView textViewName;
-        final ImageView imgUser_feed;
-        private TextView txtUserName;
+        public TextView textViewName; // textview chứa đoạn comment
+        final ImageView imgUser_feed;  // avatar của user
+        private TextView txtUserName;  // textview chứa tên khách hàng
 
 
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewName = itemView.findViewById(R.id.text_view_name_comment);  // tìm textview và imageview trong imageitem để đổ dữ liệu
-            imgUser_feed = itemView.findViewById(R.id.imgUser_comment);  // có thể trùng tên với mấy file khác nên kiểm tra lại
-            txtUserName = itemView.findViewById(R.id.txtUserName_comment);
+            textViewName = itemView.findViewById(R.id.text_view_name_comment);  //  ánh xạ đến text_view_name của file commentitem
+            imgUser_feed = itemView.findViewById(R.id.imgUser_comment);  //  ánh xạ đến imgUserfeed của file commentitem
+            txtUserName = itemView.findViewById(R.id.txtUserName_comment);// ánh xạ đến txtUserName của file commentitem
         }
     }
 }

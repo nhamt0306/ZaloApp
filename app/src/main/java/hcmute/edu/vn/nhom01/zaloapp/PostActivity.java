@@ -37,24 +37,35 @@ import hcmute.edu.vn.nhom01.zaloapp.models.Upload;
 public class PostActivity extends AppCompatActivity {
 
     private static final int PCIK_IMAGE_REQUUEST = 1;
+
+    //Button Chọn ảnh và Upload ảnh lên firebase
     private Button mButttonChooseImage;
     private Button mButtonUpload;
-
+    //textview show hình ảnh và edittext để điền status
     private TextView mTextViewShowUpLoads;
     private EditText mEditTextFileName;
+
+    //Imageview để chứa hình ảnh show lên cho người dùng xem và ProgressBar
     private ImageView mImageView;
     private ProgressBar mProgressBar;
+
+    // Lấy Image Uri
     private Uri mImageUri;
 
-
+    // lấy user link profile, user mobile và user name
     private String getProfileUrl = "";
     private String getUserMobile = "";
     private String getUserName = "";
 
+
+    // kết nối với storage và databaseref của firebase
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
 
+    // tạo UploadTask để chứa các StorageTask
     private StorageTask mUploadTask;
+
+    //Get instance cho databaseref
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     @Override
@@ -169,8 +180,8 @@ public class PostActivity extends AppCompatActivity {
                             getUserName = MemoryData.getName(PostActivity.this); // lay so ten cua user de them vào firebase
                             getUserMobile = MemoryData.getData(PostActivity.this); // lay so dien thoai cua user de them vào firebase
                             Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString(), getUserMobile.toString(), getUserName.toString(), getProfileUrl.toString()); // thêm text,imageurl và usermobile,username vào firebase cùng với url
-                            String uploadId = mDatabaseRef.push().getKey();
-                            mDatabaseRef.child(uploadId).setValue(upload);
+                            String uploadId = mDatabaseRef.push().getKey(); // lấy uploadid -- ở đây có nghĩa là key của upload  hay có thể hiểu là postid
+                            mDatabaseRef.child(uploadId).setValue(upload); // đẩy vào firebase
 
                         }
                     })

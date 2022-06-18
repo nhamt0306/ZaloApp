@@ -29,17 +29,20 @@ import hcmute.edu.vn.nhom01.zaloapp.models.Upload;
 
 public class NewFeedFragment extends Fragment {
 
+    //button add post
     private ImageButton btn_add_post;
-    private Button btn_like;
-    private Button btn_comment;
 
+
+    // recycler view để chứa các item post
     private RecyclerView mRecyclerView;
+    // adapter tạo từ ImageAdapter
     private ImageAdapter mAdapter;
     private ProgressBar mProgressCircle;
 
 
+
     private DatabaseReference mDatabaseRef;
-    private List<Upload> mUploads;
+    private List<Upload> mUploads; // list Upload để chứa các phần tử
 
     public NewFeedFragment() {
         // Required empty public constructor
@@ -50,10 +53,10 @@ public class NewFeedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
-        btn_add_post = view.findViewById(R.id.add_new_feed);
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
-        Context context = inflater.getContext();
-        mRecyclerView = view.findViewById(R.id.recycler_view_newfeed);
+        btn_add_post = view.findViewById(R.id.add_new_feed); // ánh xạ đến btn add_new_feed
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads"); // truy xuất firebase đné đối tượng uploads
+        Context context = inflater.getContext(); // get context
+        mRecyclerView = view.findViewById(R.id.recycler_view_newfeed); // ánh xạ đến recycler
         mRecyclerView.setHasFixedSize(true); // fix size
         //mRecyclerView.setLayoutManager(new LinearLayoutManager());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -62,7 +65,7 @@ public class NewFeedFragment extends Fragment {
 
         mUploads = new ArrayList<>(); // tạo ra 1 List các phần tử Upload(hình ảnh và text) để chứa khi đổ dữ liệu từ firebase xuống
 
-        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+        mDatabaseRef.addValueEventListener(new ValueEventListener() { // database thay đổi sẽ chạy vô lấy ra show lên
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUploads.clear();
@@ -70,15 +73,15 @@ public class NewFeedFragment extends Fragment {
                 {
                     String key = postSnapshot.getKey(); // Lấy key của từng bài post
 
-                    Upload upload = postSnapshot.getValue(Upload.class);
+                    Upload upload = postSnapshot.getValue(Upload.class); // bỏ vào uplooad
 
                     upload.setUploadkey(key);
                     // bỏ dữ liệu vào các phẩn tử của mảng cẩn thận nếu đặt sai tên với firebase thì sẽ không bỏ vô đc
                     mUploads.add(upload);
+                    // bỏ vào list
                 }
                 mAdapter = new ImageAdapter(context, mUploads); // sử dụng context bởi vì ở trong Fragment thì không thê sử dụng class trực tiếp
-                System.out.println("New Feed  " + mAdapter.getItemCount() + mAdapter.toString());
-                mRecyclerView.setAdapter(mAdapter);
+                mRecyclerView.setAdapter(mAdapter); // đổ từ adapter vào recycler
                 mProgressCircle.setVisibility(View.INVISIBLE);
             }
 
@@ -89,11 +92,13 @@ public class NewFeedFragment extends Fragment {
         });
 
         // Inflate the layout for this fragment
+
+        // bắt sự kiện bấm vào button + ở góc trên bene pahir để thêm vài viết
         btn_add_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PostActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(getActivity(), PostActivity.class); // get PostActivity
+                startActivity(intent); // khởi động intent
             }
         });
         return view;

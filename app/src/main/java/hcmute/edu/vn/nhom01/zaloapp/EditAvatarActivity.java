@@ -37,22 +37,34 @@ public class EditAvatarActivity extends AppCompatActivity {
 
 
     private static final int PCIK_IMAGE_REQUUEST = 1;
+    //Button Chọn ảnh và Upload ảnh lên firebase
     private Button mButttonChooseImage;
     private Button mButtonUpload;
-
+    //textview show hình ảnh và edittext để điền status
     private TextView mTextViewShowUpLoads;
     private EditText mEditTextFileName;
+    //Imageview để chứa hình ảnh show lên cho người dùng xem và ProgressBar
+
     private ImageView mImageView;
     private ProgressBar mProgressBar;
+    // Lấy Image Uri
+
     private Uri mImageUri;
+    // lấy user link profile, user mobile và user name
+
     private String getProfileUrl = "";
     private String getUserMobile = "";
     private String getUserName = "";
+    // kết nối với storage và databaseref của firebase
 
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
+    // tạo UploadTask để chứa các StorageTask
 
     private StorageTask mUploadTask;
+
+    //Get instance cho databaseref
+
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
 
@@ -60,13 +72,19 @@ public class EditAvatarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_avatar);
+        // Ánh xạ đến Button ChooseImage,Button Upload
 
         mButttonChooseImage = findViewById(R.id.btnChooseImage);
         mButtonUpload = findViewById(R.id.btnUpload);
+        // Ánh xạ đến TextView ShowUpload,EditText FileName
+
         mTextViewShowUpLoads = findViewById(R.id.tv_showuploads);
         mEditTextFileName = findViewById(R.id.edt_filename);
+        // Ánh xạ đến ImageView HinhAnh,ProgressBar
+
         mImageView = findViewById(R.id.image_view);
         mProgressBar = findViewById(R.id.progress_bar);
+        // Gọi firebase tới đối tượng upload gồm có database realtime và storage
 
         mStorageRef = FirebaseStorage.getInstance().getReference("users");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("users");
@@ -93,6 +111,8 @@ public class EditAvatarActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 getUserMobile = MemoryData.getData(EditAvatarActivity.this); // lay so dien thoai cua user de them vào firebase
                 getProfileUrl = dataSnapshot.child("users").child(getUserMobile.toString()).child("profile_pic").getValue(String.class);
+                // lấy link ảnh profile của User
+
             }
 
             @Override
@@ -159,7 +179,7 @@ public class EditAvatarActivity extends AppCompatActivity {
                             getUserMobile = MemoryData.getData(EditAvatarActivity.this); // lay so dien thoai cua user de them vào firebase
                             System.out.println(getUserMobile.toString());
                             System.out.println(downloadUrl.toString());
-                            mDatabaseRef.child(getUserMobile.toString()).child("profile_pic").setValue(downloadUrl.toString());
+                            mDatabaseRef.child(getUserMobile.toString()).child("profile_pic").setValue(downloadUrl.toString()); // thêm vào profile_url của user trên firebase
 
                         }
                     })

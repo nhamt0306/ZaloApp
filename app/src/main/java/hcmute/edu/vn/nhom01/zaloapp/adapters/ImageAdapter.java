@@ -48,21 +48,21 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Upload uploadCurrent = mUploads.get(position);
-        holder.textViewName.setText(uploadCurrent.getName());
-        holder.txtUserName.setText(uploadCurrent.getmUserName());
+        holder.textViewName.setText(uploadCurrent.getName());  // set texttView
+        holder.txtUserName.setText(uploadCurrent.getmUserName());  //set UserName
 
 
-        Picasso.get()
+        Picasso.get() // ảnh upload
                 .load(uploadCurrent.getmImageUrl())
                 .placeholder(R.mipmap.ic_launcher) // thay thế cho hình ảnh khi nó chưa kịp load lên
-                .fit()
+                .fit() // fit hình ảnh
                 .centerInside() // điều chỉnh sự xuất hiện của hình ảnh
-                .into(holder.imageView); //
-        Picasso.get().load(uploadCurrent.getmUserProfile())
-                .placeholder(R.mipmap.ic_launcher)
-                .fit()
-                .centerInside()
-                .into(holder.imgUser_feed);
+                .into(holder.imageView); //bỏ vào imageview
+        Picasso.get().load(uploadCurrent.getmUserProfile()) // avatar
+                .placeholder(R.mipmap.ic_launcher) // thay thế cho hình ảnh khi nó chưa kịp load lên
+                .fit() // fit hình ảnh
+                .centerInside() //điều chỉnh sự xuất hiện của hình ảnh
+                .into(holder.imgUser_feed);//bỏ vào imageview
 
         holder.txtLikesAmount.setText(String.valueOf(uploadCurrent.getLikes()));
 
@@ -120,10 +120,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, CommentShowListt.class);
                 //  String key=
-                String key = uploadCurrent.getUploadkey().toString();
+                String key = uploadCurrent.getUploadkey().toString(); // lấy key của post ->postid thông qua item đang click vào
                 intent.putExtra("post_key_show", key);      // truyền post_id qua để có thể sử dụng tham chiếu đến post trên firebase
                 System.out.println(key);
-                String abc = uploadCurrent.getMuserMobile().toString();
+                String abc = uploadCurrent.getMuserMobile().toString(); // lấy usermobile thông qua item đang click vào
                 System.out.println(abc);
                 intent.putExtra("post_owner", abc); //truyền postowner tức là số điện thoại người dăng post
                 //  intent.putExtra()
@@ -139,22 +139,22 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
 
     static class ImageViewHolder extends RecyclerView.ViewHolder {
-        public TextView textViewName;
-        public ImageView imageView;
-        private ImageView imgUser_feed;
-        private TextView txtUserName;
-        private Button btnLike_newfeed, btnComment_newfeed;
-        private TextView txtLikesAmount;
+        public TextView textViewName; // textView để chứa đoạn text user input vào của bài post
+        public ImageView imageView;  // imageView để chứa hình ảnh user upload lên
+        private ImageView imgUser_feed; // chứa avatar của user
+        private TextView txtUserName;  // chứa tên user
+        private Button btnLike_newfeed, btnComment_newfeed; // 2 button like và comment
+        private TextView txtLikesAmount; // đếm số like
 
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewName = itemView.findViewById(R.id.text_view_name);  // tìm textview và imageview trong imageitem để đổ dữ liệu
-            imageView = itemView.findViewById(R.id.image_view_upload);
-            imgUser_feed = itemView.findViewById(R.id.imgUser_feed);  // có thể trùng tên với mấy file khác nên kiểm tra lại
-            txtUserName = itemView.findViewById(R.id.txtUserName_feed);
-            btnLike_newfeed = itemView.findViewById(R.id.btnLike_newfeed);
-            btnComment_newfeed = itemView.findViewById(R.id.btnComment_newfeed);
-            txtLikesAmount = itemView.findViewById(R.id.txtLikesAmount);
+            textViewName = itemView.findViewById(R.id.text_view_name);  // ánh xạ đến text_view_name của file imageitem
+            imageView = itemView.findViewById(R.id.image_view_upload); // ánh xạ đến image_view_upload của file imageitem
+            imgUser_feed = itemView.findViewById(R.id.imgUser_feed);  // // ánh xạ đến imgUsẻ_feed  của file imageitem
+            txtUserName = itemView.findViewById(R.id.txtUserName_feed); // ánh xạ đến txtUserName_feed của file imageitem
+            btnLike_newfeed = itemView.findViewById(R.id.btnLike_newfeed);// ánh xạ đến btnLike_newfeed của file imageitem
+            btnComment_newfeed = itemView.findViewById(R.id.btnComment_newfeed);// ánh xạ đến btnComment_newfeed của file imageitem
+            txtLikesAmount = itemView.findViewById(R.id.txtLikesAmount);// ánh xạ đến txtLikesAmount của file imageitem
         }
     }
 

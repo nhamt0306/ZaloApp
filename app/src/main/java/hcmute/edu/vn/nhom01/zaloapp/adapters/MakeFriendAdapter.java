@@ -76,12 +76,11 @@ public class MakeFriendAdapter extends RecyclerView.Adapter<MakeFriendAdapter.Im
 
     static class ImageViewHolder extends RecyclerView.ViewHolder {
       //  final ImageView imgUser_feed;
-        private TextView txtUserName;
-        private Button btnAccept;
+        private TextView txtUserName; // chứa tên user
+        private Button btnAccept;  // btn accept bạn bè
 
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
-         //   imgUser_feed = itemView.findViewById(R.id.imgUser_comment);  // có thể trùng tên với mấy file khác nên kiểm tra lại
             txtUserName = itemView.findViewById(R.id.txtUserName_comment); // ánh xạ đến UserName
             btnAccept=itemView.findViewById(R.id.btnAccept); // ánh xja đến button accept
         }
