@@ -23,12 +23,12 @@ import hcmute.edu.vn.nhom01.zaloapp.models.Upload;
 
 public class ImagesActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
-    private ImageAdapter mAdapter;
-    private ProgressBar mProgressCircle;
+    private RecyclerView mRecyclerView; // dùng để ánh xạ tới recyler
+    private ImageAdapter mAdapter;     // dùng để chứa list<Upload> để tham chiếu đến ImageAdapter
+    private ProgressBar mProgressCircle; // dùng để ánh xạ tới progresscircle
 
 
-    private DatabaseReference mDatabaseRef;
+    private DatabaseReference mDatabaseRef;  // gọi database đến firebase
     private List<Upload> mUploads;  // bỏ item vô list
 
     @Override
@@ -36,17 +36,19 @@ public class ImagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_images);
 
-        mRecyclerView = findViewById(R.id.recycler_view);
 
+        //ánh xạ đến recycler,progresscircle
+        mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true); // fix size
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         mProgressCircle = findViewById(R.id.progress_circle);
+
+
 
 
         mUploads = new ArrayList<>(); // tạo ra 1 List các phần tử Upload(hình ảnh và text) để chứa khi đổ dữ liệu từ firebase xuống
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads"); // gọi đến firebase tới đối tượng uploads
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -54,10 +56,10 @@ public class ImagesActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren())//lấy databasesnapshot cho mỗi children của Upload -> để bỏ vào từng activity_item
                 {
                     Upload upload = postSnapshot.getValue(Upload.class);  // bỏ dữ liệu vào các phẩn tử của mảng cẩn thận nếu đặt sai tên với firebase thì sẽ không bỏ vô đc
-                    mUploads.add(upload);
+                    mUploads.add(upload); // bỏ phần tử vào list
                 }
-                mAdapter = new ImageAdapter(ImagesActivity.this, mUploads);
-                mRecyclerView.setAdapter(mAdapter);
+                mAdapter = new ImageAdapter(ImagesActivity.this, mUploads); // tham chiếu đến Adapter để show lên
+                mRecyclerView.setAdapter(mAdapter); // đổ dl từ Adapter lên Recycler
                 mProgressCircle.setVisibility(View.INVISIBLE);
             }
 

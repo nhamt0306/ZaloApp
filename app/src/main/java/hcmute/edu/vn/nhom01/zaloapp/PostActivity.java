@@ -45,6 +45,8 @@ public class PostActivity extends AppCompatActivity {
     private ImageView mImageView;
     private ProgressBar mProgressBar;
     private Uri mImageUri;
+
+
     private String getProfileUrl = "";
     private String getUserMobile = "";
     private String getUserName = "";
@@ -59,14 +61,22 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-
+        // Ánh xạ đến Button ChooseImage,Button Upload
         mButttonChooseImage = findViewById(R.id.btnChooseImage);
         mButtonUpload = findViewById(R.id.btnUpload);
+
+        // Ánh xạ đến TextView ShowUpload,EditText FileName
+
         mTextViewShowUpLoads = findViewById(R.id.tv_showuploads);
         mEditTextFileName = findViewById(R.id.edt_filename);
+
+        // Ánh xạ đến ImageView HinhAnh,ProgressBar
+
         mImageView = findViewById(R.id.image_view);
         mProgressBar = findViewById(R.id.progress_bar);
 
+
+        // Gọi firebase tới đối tượng upload gồm có database realtime và storage
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
@@ -83,7 +93,7 @@ public class PostActivity extends AppCompatActivity {
                 {
                     Toast.makeText(PostActivity.this, "Upload in progress", Toast.LENGTH_SHORT).show();
                 } else {
-                    uploadFile();
+                    uploadFile(); // gọi hàm uploadFile
                 }
             }
         });
@@ -92,6 +102,7 @@ public class PostActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 getUserMobile = MemoryData.getData(PostActivity.this); // lay so dien thoai cua user de them vào firebase
                 getProfileUrl = dataSnapshot.child("users").child(getUserMobile.toString()).child("profile_pic").getValue(String.class);
+                // lấy link ảnh profile của User
             }
 
             @Override
@@ -152,12 +163,12 @@ public class PostActivity extends AppCompatActivity {
                             }, 5000);
                             Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl(); // lấy địa chỉ url
                             while (!urlTask.isSuccessful()) ;
-                            Uri downloadUrl = urlTask.getResult(); // lấy địa chỉ
+                            Uri downloadUrl = urlTask.getResult(); // lấy địa chỉ để bỏ vào upload
 
 
                             getUserName = MemoryData.getName(PostActivity.this); // lay so ten cua user de them vào firebase
                             getUserMobile = MemoryData.getData(PostActivity.this); // lay so dien thoai cua user de them vào firebase
-                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString(), getUserMobile.toString(), getUserName.toString(), getProfileUrl.toString()); // thêm text và usermobile vào firebase cùng với url
+                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString(), getUserMobile.toString(), getUserName.toString(), getProfileUrl.toString()); // thêm text,imageurl và usermobile,username vào firebase cùng với url
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(upload);
 
