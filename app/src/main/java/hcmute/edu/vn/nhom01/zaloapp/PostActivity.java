@@ -157,16 +157,9 @@ public class PostActivity extends AppCompatActivity {
 
                             getUserName = MemoryData.getName(PostActivity.this); // lay so ten cua user de them vào firebase
                             getUserMobile = MemoryData.getData(PostActivity.this); // lay so dien thoai cua user de them vào firebase
-                            System.out.println("So dien thoai" + getUserMobile.toString());
                             Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString(), getUserMobile.toString(), getUserName.toString(), getProfileUrl.toString()); // thêm text và usermobile vào firebase cùng với url
-                            System.out.println("sau khi goi ham" + upload.getName());
-                            System.out.println("sau khi goi ham" + upload.getMuserMobile());
-                            System.out.println("sau khi goi ham" + upload.getmUserName());
-                            System.out.println("day la profile url" + getProfileUrl.toString());
-                            System.out.println("sau khi goi ham" + upload.getmUserProfile());
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(upload);
-
 
                         }
                     })
