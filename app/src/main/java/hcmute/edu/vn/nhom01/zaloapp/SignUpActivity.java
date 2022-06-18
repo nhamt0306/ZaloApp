@@ -21,6 +21,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText edtPass, edtPhone, edtEmail, edtRepass;
     // DatabaseReference refer đến firebase
     DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,8 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     // Tạo thêm user trên Fire base trong child users
-    private void writeNewUser(String phone, String email, String pass, String name, String profileurl)
-    {
+    private void writeNewUser(String phone, String email, String pass, String name, String profileurl) {
         // Tạo đối tương user với các thông tin truyền vào từ người dùng, mặc định khi vừa tạo tài
         // khoản tên và url avatar sẽ chưa có, người dùng sẽ phải cập nhật sau
         User user = new User(phone, pass, email, "Chưa cập nhật tên!", "");

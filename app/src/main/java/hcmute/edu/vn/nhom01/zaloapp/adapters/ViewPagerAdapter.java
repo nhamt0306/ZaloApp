@@ -11,10 +11,12 @@ import hcmute.edu.vn.nhom01.zaloapp.NewFeedFragment;
 import hcmute.edu.vn.nhom01.zaloapp.UserInfoFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
+    // Constructor mặc định
     public ViewPagerAdapter(FragmentManager supportFragmentManager, int behaviorResumeOnlyCurrentFragment) {
         super(supportFragmentManager, behaviorResumeOnlyCurrentFragment);
     }
 
+    // Với mỗi vị trí, sẽ trả về từng fragment tương ứng, với 0, 1, 2 lần lượt là MessageFragment, NewFeedFragment, UserInfoFragment
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -30,8 +32,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         }
     }
 
+    // Trả về số lượng phần tử trong viewpager
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 }

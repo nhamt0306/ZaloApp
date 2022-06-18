@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity
-            android:name=".models.Friends"
+            android:name=".Friends"
             android:exported="false" />
         <activity
             android:name=".AcceptFriendActivity"

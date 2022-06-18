@@ -22,7 +22,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
     private Context mContext; //     // context thể hiện trạng thái hiện tại
     private List<Comments> mComments;  //list class Comment để chứa các item
 
-
     public CommentAdapter(Context context, List<Comments> comments) { // constructor  để gọi bên các hàm show recycler
         mContext = context;  // context của class cần truy xuất
         mComments = comments; // list class comment
@@ -47,7 +46,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
     public int getItemCount() {
         return mComments.size();
     }
-
 
     static class ImageViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewName; // textview chứa đoạn comment

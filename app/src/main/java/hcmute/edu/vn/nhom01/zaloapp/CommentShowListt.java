@@ -28,7 +28,7 @@ import hcmute.edu.vn.nhom01.zaloapp.adapters.CommentAdapter;
 import hcmute.edu.vn.nhom01.zaloapp.models.Comments;
 
 public class CommentShowListt extends AppCompatActivity {
-    private RecyclerView mRecyclerView;  // để ánh xja đến recyclerview
+    private RecyclerView mRecyclerView;  // để ánh xạ đến recyclerview
     private CommentAdapter mAdapter;  // tạo ra adapter từ CommentAdapter
     private ProgressBar mProgressCircle;
     private Integer getCommentCount; // lấy số lượng comment hiện có của bài post
@@ -175,7 +175,6 @@ public class CommentShowListt extends AppCompatActivity {
 
         mDatabaseRef.child(post_key).child(getCommentCount.toString()).setValue(comments);
         // đổ vào firebase
-
 
         Intent intent = new Intent(CommentShowListt.this, CommentShowListt.class); // start intent lần nữa để load lại
         intent.putExtra("post_key_show", post_key);

@@ -1,4 +1,4 @@
-package hcmute.edu.vn.nhom01.zaloapp.models;
+package hcmute.edu.vn.nhom01.zaloapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +7,6 @@ import android.os.Bundle;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import hcmute.edu.vn.nhom01.zaloapp.MemoryData;
-import hcmute.edu.vn.nhom01.zaloapp.R;
-
 public class Friends extends AppCompatActivity {
 
     // tạo 2 databaseref để tham chiếu đến 2 đối tượng trong firebase : friends và makefriend
@@ -17,7 +14,8 @@ public class Friends extends AppCompatActivity {
     private DatabaseReference mDatabaseRef_friends;
     private String getUserMobile = ""; // chứa số điện thoại của người dùng
 
-    private String sender=""; // chứa số điện thoại người gửi request
+    private String sender = ""; // chứa số điện thoại người gửi request
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +23,7 @@ public class Friends extends AppCompatActivity {
 
         getUserMobile = MemoryData.getData(Friends.this); // lay so dien thoai cua user de them vào firebase
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("makefriend"); // tham chiếu đến makefriend trên firebase
-        sender=getIntent().getStringExtra("sender"); // lấy số điện thoại người gửi request
+        sender = getIntent().getStringExtra("sender"); // lấy số điện thoại người gửi request
         mDatabaseRef_friends = FirebaseDatabase.getInstance().getReference("friends"); // tham chiếu đến friends trên firebase
 
         // đầu tiên sẽ xóa dữ liệu bên đối tượng makefriend

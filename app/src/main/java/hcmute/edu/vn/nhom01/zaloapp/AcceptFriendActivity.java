@@ -25,8 +25,7 @@ import hcmute.edu.vn.nhom01.zaloapp.models.Upload;
 
 public class AcceptFriendActivity extends AppCompatActivity {
 
-
-    private RecyclerView mRecyclerView; // để ánh xja đến recyclerview
+    private RecyclerView mRecyclerView; // để ánh xạ đến recyclerview
     private MakeFriendAdapter mAdapter; // tạo ra adapter từ MakeFriendAdapter
     private ProgressBar mProgressCircle;
 
@@ -56,8 +55,7 @@ public class AcceptFriendActivity extends AppCompatActivity {
 
 
         // gọi đến firebase tới đối tượng makefriend dựa trên usermobile hiện tại đang sử dụng app
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("makefriend/"+getUserMobile.toString());
-
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("makefriend/" + getUserMobile.toString());
 
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
@@ -78,34 +76,6 @@ public class AcceptFriendActivity extends AppCompatActivity {
                 Toast.makeText(AcceptFriendActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        imageViewAccept.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
 
     }
 }

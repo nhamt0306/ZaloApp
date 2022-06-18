@@ -76,8 +76,8 @@ public class MessageFragment extends Fragment {
         // Inflate fragment_messages cho fragment này
         View view = inflater.inflate(R.layout.fragment_messages, container, false);
 
-        makefriend=view.findViewById(R.id.imageview_makefriend);
-        AcceptFriend=view.findViewById(R.id.imageview_acceptfriend);
+        makefriend = view.findViewById(R.id.imageview_makefriend);
+        AcceptFriend = view.findViewById(R.id.imageview_acceptfriend);
 
         //lấy dữ liệu số điện thoại, email, tên từ intent
         mobile = getActivity().getIntent().getStringExtra("mobile");
@@ -133,33 +133,17 @@ public class MessageFragment extends Fragment {
         makefriend.setOnClickListener(new View.OnClickListener() {  // nhấn vào biểu tượng kính lúp để
             @Override                                        // tìm kiếm bạn bè
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),MakeFriendActivity.class);
+                Intent intent = new Intent(getActivity(), MakeFriendActivity.class);
                 startActivity(intent);
             }
         });
         AcceptFriend.setOnClickListener(new View.OnClickListener() { // nhấn vào biểu tượng thêm bạn bè
             @Override                                               // để thêm bạn bè
             public void onClick(View v) {
-                Intent intent =new Intent(getActivity(),AcceptFriendActivity.class);
+                Intent intent = new Intent(getActivity(), AcceptFriendActivity.class);
                 startActivity(intent);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         // Thực hiện cập nhật dữ liệu lên MessageFragment
         databaseReference.addValueEventListener(new ValueEventListener() {

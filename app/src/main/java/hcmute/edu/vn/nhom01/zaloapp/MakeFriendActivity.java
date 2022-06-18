@@ -24,14 +24,15 @@ public class MakeFriendActivity extends AppCompatActivity {
     private String getUserName = "";   // chứa tên của người dùng
     private Button btnMakeFriend;   // tạo Btn và edt để ánh xạ
     private EditText edt_friendrequest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_friend);
 
 //        Ánh xạ Button Make Friend và edit text friend request
-        btnMakeFriend=findViewById(R.id.btnMakeFriend);
-        edt_friendrequest=findViewById(R.id.findfriend);
+        btnMakeFriend = findViewById(R.id.btnMakeFriend);
+        edt_friendrequest = findViewById(R.id.findfriend);
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("makefriend"); // trỏ đến firebase
 
@@ -61,9 +62,9 @@ public class MakeFriendActivity extends AppCompatActivity {
     private void upload_friendRequest() {
         getUserName = MemoryData.getName(MakeFriendActivity.this); // lay so ten cua user de them vào firebase
         getUserMobile = MemoryData.getData(MakeFriendActivity.this); // lay so dien thoai cua user de them vào firebase
-        MakeFriendRequest friendRequest=new MakeFriendRequest(getUserMobile.toString(),edt_friendrequest.getText().toString().trim(),getUserName.toString()); // bỏ vào class MakeFriendRequest theo đúng thứ tự
+        MakeFriendRequest friendRequest = new MakeFriendRequest(getUserMobile.toString(), edt_friendrequest.getText().toString().trim(), getUserName.toString()); // bỏ vào class MakeFriendRequest theo đúng thứ tự
         mDatabaseRef.child(edt_friendrequest.getText().toString().trim()).child(getUserMobile.toString()).setValue(friendRequest); //bỏ vào database theo mẫu receiver -- sender -- thông tin
-        Intent intent=new Intent(MakeFriendActivity.this,MakeFriendActivity.class); // load lại
+        Intent intent = new Intent(MakeFriendActivity.this, MakeFriendActivity.class); // load lại
         startActivity(intent);
     }
 }

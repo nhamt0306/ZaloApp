@@ -32,13 +32,11 @@ public class NewFeedFragment extends Fragment {
     //button add post
     private ImageButton btn_add_post;
 
-
     // recycler view để chứa các item post
     private RecyclerView mRecyclerView;
     // adapter tạo từ ImageAdapter
     private ImageAdapter mAdapter;
     private ProgressBar mProgressCircle;
-
 
 
     private DatabaseReference mDatabaseRef;

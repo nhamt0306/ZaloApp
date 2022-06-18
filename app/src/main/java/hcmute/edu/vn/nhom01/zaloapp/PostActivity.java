@@ -176,7 +176,6 @@ public class PostActivity extends AppCompatActivity {
                             while (!urlTask.isSuccessful()) ;
                             Uri downloadUrl = urlTask.getResult(); // lấy địa chỉ để bỏ vào upload
 
-
                             getUserName = MemoryData.getName(PostActivity.this); // lay so ten cua user de them vào firebase
                             getUserMobile = MemoryData.getData(PostActivity.this); // lay so dien thoai cua user de them vào firebase
                             Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString(), getUserMobile.toString(), getUserName.toString(), getProfileUrl.toString()); // thêm text,imageurl và usermobile,username vào firebase cùng với url

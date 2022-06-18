@@ -27,7 +27,6 @@ public class ImagesActivity extends AppCompatActivity {
     private ImageAdapter mAdapter;     // dùng để chứa list<Upload> để tham chiếu đến ImageAdapter
     private ProgressBar mProgressCircle; // dùng để ánh xạ tới progresscircle
 
-
     private DatabaseReference mDatabaseRef;  // gọi database đến firebase
     private List<Upload> mUploads;  // bỏ item vô list
 
@@ -36,15 +35,11 @@ public class ImagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_images);
 
-
         //ánh xạ đến recycler,progresscircle
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true); // fix size
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mProgressCircle = findViewById(R.id.progress_circle);
-
-
-
 
         mUploads = new ArrayList<>(); // tạo ra 1 List các phần tử Upload(hình ảnh và text) để chứa khi đổ dữ liệu từ firebase xuống
 

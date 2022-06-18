@@ -35,7 +35,6 @@ import com.squareup.picasso.Picasso;
 
 public class EditAvatarActivity extends AppCompatActivity {
 
-
     private static final int PCIK_IMAGE_REQUUEST = 1;
     //Button Chọn ảnh và Upload ảnh lên firebase
     private Button mButttonChooseImage;
