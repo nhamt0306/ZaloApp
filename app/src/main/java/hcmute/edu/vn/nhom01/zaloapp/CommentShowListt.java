@@ -25,6 +25,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import hcmute.edu.vn.nhom01.zaloapp.adapters.CommentAdapter;
+import hcmute.edu.vn.nhom01.zaloapp.models.Comments;
 
 public class CommentShowListt extends AppCompatActivity {
     private RecyclerView mRecyclerView;  // để ánh xja đến recyclerview

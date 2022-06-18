@@ -1,4 +1,4 @@
-package hcmute.edu.vn.nhom01.zaloapp;
+package hcmute.edu.vn.nhom01.zaloapp.models;
 
 public class Comments {
 

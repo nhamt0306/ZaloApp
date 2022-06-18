@@ -1,19 +1,14 @@
-package hcmute.edu.vn.nhom01.zaloapp;
+package hcmute.edu.vn.nhom01.zaloapp.models;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import hcmute.edu.vn.nhom01.zaloapp.adapters.MakeFriendAdapter;
+import hcmute.edu.vn.nhom01.zaloapp.MemoryData;
+import hcmute.edu.vn.nhom01.zaloapp.R;
 
 public class Friends extends AppCompatActivity {
 

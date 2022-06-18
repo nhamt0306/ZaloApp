@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import hcmute.edu.vn.nhom01.zaloapp.Comments;
+import hcmute.edu.vn.nhom01.zaloapp.models.Comments;
 import hcmute.edu.vn.nhom01.zaloapp.R;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageViewHolder> {
