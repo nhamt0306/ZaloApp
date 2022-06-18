@@ -48,21 +48,26 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Upload uploadCurrent = mUploads.get(position);
-        holder.textViewName.setText(uploadCurrent.getName());  // set texttView
-        holder.txtUserName.setText(uploadCurrent.getmUserName());  //set UserName
+        holder.textViewName.setText(uploadCurrent.getName());
+        holder.txtUserName.setText(uploadCurrent.getmUserName());
 
 
-        Picasso.get() // ảnh upload
+        Picasso.get()
                 .load(uploadCurrent.getmImageUrl())
                 .placeholder(R.mipmap.ic_launcher) // thay thế cho hình ảnh khi nó chưa kịp load lên
-                .fit() // fit hình ảnh
+                .fit()
                 .centerInside() // điều chỉnh sự xuất hiện của hình ảnh
-                .into(holder.imageView); //bỏ vào imageview
-        Picasso.get().load(uploadCurrent.getmUserProfile()) // avatar
-                .placeholder(R.mipmap.ic_launcher) // thay thế cho hình ảnh khi nó chưa kịp load lên
-                .fit() // fit hình ảnh
-                .centerInside() //điều chỉnh sự xuất hiện của hình ảnh
-                .into(holder.imgUser_feed);//bỏ vào imageview
+                .into(holder.imageView); //
+
+        if (!uploadCurrent.getmUserProfile().equals("")) {
+            Picasso.get().load(uploadCurrent.getmUserProfile()) // avatar
+                    .placeholder(R.mipmap.ic_launcher) // thay thế cho hình ảnh khi nó chưa kịp load lên
+                    .fit() // fit hình ảnh
+                    .centerInside() //điều chỉnh sự xuất hiện của hình ảnh
+                    .into(holder.imgUser_feed);//bỏ vào imageview
+        }
+
+
 
         holder.txtLikesAmount.setText(String.valueOf(uploadCurrent.getLikes()));
 
