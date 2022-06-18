@@ -19,13 +19,13 @@ import hcmute.edu.vn.nhom01.zaloapp.R;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageViewHolder> {
 
-    private Context mContext;
-    private List<Comments> mComments;
+    private Context mContext; //     // context thể hiện trạng thái hiện tại
+    private List<Comments> mComments;  //list class Comment để chứa các item
 
 
-    public CommentAdapter(Context context, List<Comments> comments) {
-        mContext = context;
-        mComments = comments;
+    public CommentAdapter(Context context, List<Comments> comments) { // constructor  để gọi bên các hàm show recycler
+        mContext = context;  // context của class cần truy xuất
+        mComments = comments; // list class comment
     }
 
     @NonNull

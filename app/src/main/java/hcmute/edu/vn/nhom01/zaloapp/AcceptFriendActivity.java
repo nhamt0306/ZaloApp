@@ -25,16 +25,17 @@ import hcmute.edu.vn.nhom01.zaloapp.models.Upload;
 
 public class AcceptFriendActivity extends AppCompatActivity {
 
-    private ImageView imageViewAccept;
 
-    private RecyclerView mRecyclerView;
-    private MakeFriendAdapter mAdapter;
+    private RecyclerView mRecyclerView; // để ánh xja đến recyclerview
+    private MakeFriendAdapter mAdapter; // tạo ra adapter từ MakeFriendAdapter
     private ProgressBar mProgressCircle;
 
     private String getUserMobile = ""; // chứa số điện thoại của người dùng
 
     private DatabaseReference mDatabaseRef;
-    private List<MakeFriendRequest> mUploads;  // bỏ item vô list
+    // getinstance firebase
+
+    private List<MakeFriendRequest> mUploads;  // bỏ item vô list của class MakeFriendRequest
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,6 @@ public class AcceptFriendActivity extends AppCompatActivity {
 
         // ánh xạ đến recycler
         mRecyclerView = findViewById(R.id.recycler_view_acceptfriend);
-
         mRecyclerView.setHasFixedSize(true); // fix size
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -55,7 +55,7 @@ public class AcceptFriendActivity extends AppCompatActivity {
         getUserMobile = MemoryData.getData(AcceptFriendActivity.this); // lay so dien thoai cua user de them vào firebase
 
 
-        //
+        // gọi đến firebase tới đối tượng makefriend dựa trên usermobile hiện tại đang sử dụng app
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("makefriend/"+getUserMobile.toString());
 
 

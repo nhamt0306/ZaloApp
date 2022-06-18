@@ -3,6 +3,8 @@ package hcmute.edu.vn.nhom01.zaloapp.models;
 // Upload hinh anh cua Khoa
 public class Upload {
 
+    // Biến lưu name,Imageurl,userMobile,username,userprofile,uploadid hay uploadkey,số lượng likes của user
+
     private String name;
     private String mImageUrl;
     private String muserMobile;
@@ -11,6 +13,7 @@ public class Upload {
     private String Uploadkey;
     private int Likes;
 
+    //getter và setter của uploadkey và likes
     public String getUploadkey() {
         return Uploadkey;
     }
@@ -58,7 +61,7 @@ public class Upload {
         }
         this.name = name;
         this.mImageUrl = mImageUrl;
-        this.muserMobile = userMobile;   // constructor này có thêm user mobile
+        this.muserMobile = userMobile;   // constructor này có thêm user name
         this.mUserName = UserName;
     }
 
@@ -69,11 +72,13 @@ public class Upload {
         }
         this.name = name;
         this.mImageUrl = mImageUrl;
-        this.muserMobile = userMobile;   // constructor này có thêm user mobile
+        this.muserMobile = userMobile;   // constructor này có thêm user profile
         this.mUserName = UserName;
         this.mUserProfile = UserProfile;
     }
 
+
+    //getter và setter của name,Imageurl,userMobile,username,userprofile,uploadid
     public String getmUserProfile() {
         return mUserProfile;
     }

@@ -19,8 +19,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import hcmute.edu.vn.nhom01.zaloapp.models.User;
 
 public class EditProfileActivity extends AppCompatActivity {
-    private CircleImageView imgUserEditProfile;
-    private TextView txtUserNameEditProfile;
+    private CircleImageView imgUserEditProfile; // CircleImageView để chứa avatar
+    private TextView txtUserNameEditProfile; //TextView
     private EditText edtNameProfile, edtAgeProfile, edtPhoneProfile, edtEmailProfile, edtAddressProfile;
     private Button btnSaveInfo;
     private DatabaseReference databaseReference;

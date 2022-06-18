@@ -29,13 +29,13 @@ import hcmute.edu.vn.nhom01.zaloapp.models.Upload;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
 
-    private Context mContext;
-    private List<Upload> mUploads;
+    private Context mContext; // context thể hiện trạng thái hiện tại
+    private List<Upload> mUploads; //list class Upload  để chứa các item
 
 
-    public ImageAdapter(Context context, List<Upload> uploads) {
-        mContext = context;
-        mUploads = uploads;
+    public ImageAdapter(Context context, List<Upload> uploads) { // constructor  để gọi bên các hàm show recycler
+        mContext = context; // context của class cần truy xuất
+        mUploads = uploads;  // list class comment
     }
 
     @NonNull
@@ -48,8 +48,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Upload uploadCurrent = mUploads.get(position);
-        holder.textViewName.setText(uploadCurrent.getName());
-        holder.txtUserName.setText(uploadCurrent.getmUserName());
+        holder.textViewName.setText(uploadCurrent.getName()); // set text của status
+        holder.txtUserName.setText(uploadCurrent.getmUserName()); // set text của user name
 
 
         Picasso.get()
@@ -71,12 +71,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
         holder.txtLikesAmount.setText(String.valueOf(uploadCurrent.getLikes()));
 
-//        Picasso.get()
-//                .load(uploadCurrent.getmUserProfile())
-//                .placeholder(R.mipmap.ic_launcher) // thay thế cho hình ảnh khi nó chưa kịp load lên
-//                .fit()
-//                .centerInside() // điều chỉnh sự xuất hiện của hình ảnh
-//                .into(holder.imgUser_feed); //
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         // Xử lý sự kiện click like
