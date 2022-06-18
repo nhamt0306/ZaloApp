@@ -160,7 +160,7 @@ public class PostActivity extends AppCompatActivity {
                             Upload upload = new Upload(mEditTextFileName.getText().toString().trim(), downloadUrl.toString(), getUserMobile.toString(), getUserName.toString(), getProfileUrl.toString()); // thêm text và usermobile vào firebase cùng với url
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(upload);
-
+                            mDatabaseRef.child(uploadId).child("likes").removeValue();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() { // nếu không thành côngg

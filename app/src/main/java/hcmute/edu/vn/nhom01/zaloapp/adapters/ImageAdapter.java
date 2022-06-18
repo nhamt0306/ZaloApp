@@ -2,6 +2,7 @@ package hcmute.edu.vn.nhom01.zaloapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,11 +59,15 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                 .fit()
                 .centerInside() // điều chỉnh sự xuất hiện của hình ảnh
                 .into(holder.imageView); //
-        Picasso.get().load(uploadCurrent.getmUserProfile())
-                .placeholder(R.mipmap.ic_launcher)
-                .fit()
-                .centerInside()
-                .into(holder.imgUser_feed);
+
+        if (!uploadCurrent.getmUserProfile().equals("")) {
+            Picasso.get().load(uploadCurrent.getmUserProfile())
+                    .placeholder(R.mipmap.ic_launcher)
+                    .fit()
+                    .centerInside()
+                    .into(holder.imgUser_feed);
+        }
+
 
         holder.txtLikesAmount.setText(String.valueOf(uploadCurrent.getLikes()));
 
