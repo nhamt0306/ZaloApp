@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context="hcmute.edu.vn.nhom01.zaloapp.CommentActivity_test"
+    tools:context="hcmute.edu.vn.nhom01.zaloapp.CommentShowListt"
     xmlns:tools="http://schemas.android.com/tools">
 
 

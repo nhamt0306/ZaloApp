@@ -1,6 +1,7 @@
 package hcmute.edu.vn.nhom01.zaloapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -64,11 +66,18 @@ public class MessageFragment extends Fragment {
     public MessageFragment() {
     }
 
+    private ImageView makefriend;
+    private ImageView AcceptFriend;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate fragment_messages cho fragment này
         View view = inflater.inflate(R.layout.fragment_messages, container, false);
+
+        makefriend=view.findViewById(R.id.imageview_makefriend);
+        AcceptFriend=view.findViewById(R.id.imageview_acceptfriend);
 
         //lấy dữ liệu số điện thoại, email, tên từ intent
         mobile = getActivity().getIntent().getStringExtra("mobile");
@@ -120,6 +129,37 @@ public class MessageFragment extends Fragment {
                 progressDialog.dismiss();
             }
         });
+
+        makefriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(),MakeFriendActivity.class);
+                startActivity(intent);
+            }
+        });
+        AcceptFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getActivity(),AcceptFriendActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // Thực hiện cập nhật dữ liệu lên MessageFragment
         databaseReference.addValueEventListener(new ValueEventListener() {
