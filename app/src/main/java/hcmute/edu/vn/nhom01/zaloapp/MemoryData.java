@@ -14,7 +14,9 @@ public class MemoryData {
     // Lưu dữ liệu số điện thoại người dùng vào file datata.txt
     public static void saveData(String data, Context context) {
         try {
+            // Mở file datata.txt
             FileOutputStream fileOutputStream = context.openFileOutput("datata.txt", Context.MODE_PRIVATE);
+            // Ghi đè thông tin data lên file
             fileOutputStream.write(data.getBytes());
             fileOutputStream.close();
         } catch (IOException e) {
@@ -25,7 +27,9 @@ public class MemoryData {
     // Lưu dữ liệu id của cuộc hội thoại vào file có dạng chatid.txt
     public static void saveLastMsgTS(String data, String chatId, Context context) {
         try {
+            // Mở file chatId + .txt
             FileOutputStream fileOutputStream = context.openFileOutput(chatId + ".txt", Context.MODE_PRIVATE);
+            // Ghi đè thông tin data lên file
             fileOutputStream.write(data.getBytes());
             fileOutputStream.close();
         } catch (IOException e) {
@@ -48,14 +52,18 @@ public class MemoryData {
     public static String getData(Context context) {
         String data = "";
         try {
+            // Mở file datata
             FileInputStream fileInputStream = context.openFileInput("datata.txt");
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             StringBuilder stringBuilder = new StringBuilder();
+            // Biến lưu thông tin trong file
             String line;
+            // Đọc thông tin và lưu trên stringBuilder
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);
             }
+            // Lưu thông tin đọc đc trên data, trả về kết quả
             data = stringBuilder.toString();
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,14 +75,18 @@ public class MemoryData {
     public static String getName(Context context) {
         String data = "";
         try {
+            // Mở file nameee
             FileInputStream fileInputStream = context.openFileInput("nameee.txt");
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             StringBuilder stringBuilder = new StringBuilder();
+            // Biến lưu thông tin trong file
             String line;
+            // Đọc thông tin và lưu trên stringBuilder
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);
             }
+            // Lưu thông tin đọc đc trên data, trả về kết quả
             data = stringBuilder.toString();
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,18 +94,22 @@ public class MemoryData {
         return data;
     }
 
-    // Lấy dữ liệu id của cuộc hội thoại từ file có dạng "chatid".txt
+    // Lấy dữ liệu mốc thời gian của cuộc hội thoại từ file có dạng "chatid".txt
     public static String getLastMsgTs(Context context, String chatId) {
         String data = "0";
         try {
+            // Mở file có tên chatID + .txt
             FileInputStream fileInputStream = context.openFileInput(chatId + ".txt");
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             StringBuilder stringBuilder = new StringBuilder();
+            // Biến lưu thông tin trong file
             String line;
+            // Đọc thông tin và lưu trên stringBuilder
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);
             }
+            // Lưu thông tin đọc đc trên data, trả về kết quả
             data = stringBuilder.toString();
         } catch (IOException e) {
             e.printStackTrace();
